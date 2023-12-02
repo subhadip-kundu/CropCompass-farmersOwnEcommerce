@@ -1,7 +1,7 @@
 import React from 'react'
-import Organic from '../../assets/Organic.png'
-import OrganicFartilizer from '../../assets/OrganicFartilizer.png'
-import OrganicFood from '../../assets/OrganicFood.png'
+import Organic from '../../../assets/Organic.png'
+import OrganicFartilizer from '../../../assets/OrganicFartilizer.png'
+import OrganicFood from '../../../assets/OrganicFood.png'
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";

@@ -1,5 +1,5 @@
 import React from 'react'
-import companyLogo from '../../assets/AgroConnectBazaar.png'
+import companyLogo from '../../../assets/AgroConnectBazaar.png'
 function Navbar() {
   return (
     <div>

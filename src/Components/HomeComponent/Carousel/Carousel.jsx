@@ -3,11 +3,11 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import SliderCard from '../SliderCard/SliderCard';
-import './Crousel.css';
-import vegetable from '../../assets/Vegetable.png'
-import vegetableTwo from '../../assets/Vegitable.png'
-import vegetableThree from '../../assets/vegetableThree.png'
+import vegetable from '../../../assets/Vegetable.png'
+import vegetableTwo from '../../../assets/Vegitable.png'
+import vegetableThree from '../../../assets/vegetableThree.png'
 
+import './Crousel.css';
 
 const Carousel = () => {
   const settings = {

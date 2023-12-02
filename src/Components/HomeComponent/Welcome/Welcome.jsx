@@ -1,7 +1,7 @@
 import React from 'react'
-import AppleBucket from '../../assets/AppleBucket.png'
-import greenCoconut from '../../assets/GreenCoconut.png'
-import GreenApple from '../../assets/GreenApple.png'
+import AppleBucket from '../../../assets/AppleBucket.png'
+import greenCoconut from '../../../assets/GreenCoconut.png'
+import GreenApple from '../../../assets/GreenApple.png'
 
 function Welcome() {
     return (
