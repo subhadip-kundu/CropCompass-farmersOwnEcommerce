@@ -1,0 +1,24 @@
+.slick-next {
+    right: 50px;
+}
+
+.slick-next:before {
+    color: #1cd12885;
+    font-size:2.7rem;
+}
+
+.slick-prev {
+    left: 10px;
+    z-index: 1;
+}
+
+.slick-prev:before {
+    color: #1cd1288c;
+    font-size:2.7rem;
+}
+
+.slick-dots {
+    background-color: rgb(220, 252, 231);
+    padding-bottom: 1rem;
+
+}
