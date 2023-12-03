@@ -42,7 +42,7 @@ function Footer() {
 
                 {/* Newsletter Subscription */}
                 <div className="mb-6 ">
-                    <h2 className="text-xl font-bold mb-4 hover:text-cyan-600 underline ">Subscribe</h2>
+                    <h2 className="text-xl font-bold mb-4 hover:text-cyan-600 ">Subscribe</h2>
                     <p className="text-violet-900 font-semibold mb-2">
                         Subscribe to our newsletter for exclusive offers and updates.
                     </p>
@@ -50,7 +50,7 @@ function Footer() {
                         <input
                             type="email"
                             placeholder="Your email"
-                            className="p-2 border border-gray-600 border-none outline-none rounded-l-full pl-5 font-medium"
+                            className="p-2 border border-gray-600 border-none outline-none rounded-l-full pl-5 font-medium capitalize"
                         />
                         <button className="bg-blue-500 text-white p-2 pl-4 pr-5 outline-none rounded-r-full hover:text-blue-500 hover:bg-white hover:border-l-[1px] hover:border-purple-800 ">Subscribe</button>
                     </div>
@@ -86,7 +86,7 @@ function Footer() {
 
             {/* Copyright */}
             <div className="mt-8 text-center ">
-                <p className="text-violet-900 font-semibold">&copy; 2023 AgroConnectBazaar. All rights reserved.</p>
+                <p className="text-violet-900 font-semibold">&copy; 2023 <span className='text-orange-600'>AgroConnectBazaar</span> . All rights reserved.</p>
             </div>
         </footer>
     )

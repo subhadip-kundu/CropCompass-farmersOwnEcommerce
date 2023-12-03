@@ -16,7 +16,7 @@ function ServicesCard() {
     slidesToScroll: 1
   };
   return (
-    <div className="w-full pt-14 pb-32 bg-my-image flex">
+    <div className="w-full pt-14 pb-32 bg-slider-background-image flex">
       <div className='w-3/4 m-auto'>
         <div className="mt-20 test ">
           <Slider {...settings}>

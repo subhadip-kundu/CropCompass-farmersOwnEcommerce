@@ -1,21 +1,36 @@
 import React from 'react'
 import companyLogo from '../../../assets/AgroConnectBazaar.png'
+import { Link, NavLink } from 'react-router-dom'
+
+
 function Navbar() {
   return (
     <div>
-      <div className="flex justify-between w-full bg-green-50 pl-10 p-2 pr-10 align-middle ">
+      <nav className="flex justify-between w-full bg-green-50 pl-10 p-2 pr-10 align-middle ">
         <section className="logo">
           <img src={companyLogo} alt="Logo_image" className='w-44 cursor-pointer' />
         </section>
         <section className="pt-6">
           <ul>
             <li className='flex justify-center gap-6 font-bold font-Rubik '>
-              <a href="#" className=' text-red-600 border-b-2 border-red-600 text-lg -mt-1'>Home</a>
-              <a href="#" className=' hover:text-red-600 duration-200'>About Us</a>
-              <a href="#" className=' hover:text-red-600 duration-200'>Services</a>
-              <a href="#" className=' hover:text-red-600 duration-200'>Shop</a>
-              <a href="#" className=' hover:text-red-600 duration-200'>Blog</a>
-              <a href="#" className=' hover:text-red-600 duration-200'>Contact Us</a>
+              <NavLink to="/" className={({ isActive }) => `
+                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-gray-800"}
+              `}>Home</NavLink>
+              <NavLink to="/about-us" className={({ isActive }) => `
+                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-gray-800"}
+              `}>About Us</NavLink>
+              <NavLink to="/services" className={({ isActive }) => `
+                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-gray-800"}
+              `}>Services</NavLink>
+              <NavLink to="/shop" className={({ isActive }) => `
+                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-gray-800"}
+              `}>Shop</NavLink>
+              <NavLink to="/blog" className={({ isActive }) => `
+                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-gray-800"}
+              `}>Blog</NavLink>
+              <NavLink to="/contact-us" className={({ isActive }) => `
+                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-gray-800"}
+              `}>Contact Us</NavLink>
             </li>
           </ul>
         </section>
@@ -23,7 +38,7 @@ function Navbar() {
           <i className="fa-regular fa-user cursor-pointer hover:scale-105 duration-200"></i>
           <i className="fa-solid fa-cart-shopping cursor-pointer hover:scale-105 duration-200"></i>
         </section>
-      </div>
+      </nav>
     </div>
   )
 }

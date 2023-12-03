@@ -8,13 +8,11 @@ import Footer from '../Footer/Footer';
 function Home() {
   return (
     <div>
-      <Navbar />
       <Carousel />
       <Welcome />
       <ServicesCard />
-      <Footer />
     </div>
   )
 }
 
-export default Home;
+export default Home ;
