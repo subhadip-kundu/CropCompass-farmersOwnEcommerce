@@ -19,9 +19,6 @@ function Navbar() {
               <NavLink to="/about-us" className={({ isActive }) => `
                   text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-gray-800"}
               `}>About Us</NavLink>
-              <NavLink to="/services" className={({ isActive }) => `
-                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-gray-800"}
-              `}>Services</NavLink>
               <NavLink to="/shop" className={({ isActive }) => `
                   text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-gray-800"}
               `}>Shop</NavLink>
