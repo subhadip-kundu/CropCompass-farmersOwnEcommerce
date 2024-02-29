@@ -22,9 +22,9 @@ function Navbar() {
               <NavLink to="/shop" className={({ isActive }) => `
                   text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-gray-800"}
               `}>Shop</NavLink>
-              <NavLink to="/blog" className={({ isActive }) => `
+              <NavLink to="/sell" className={({ isActive }) => `
                   text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-gray-800"}
-              `}>Blog</NavLink>
+              `}>Sell</NavLink>
               <NavLink to="/contact-us" className={({ isActive }) => `
                   text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-gray-800"}
               `}>Contact Us</NavLink>
