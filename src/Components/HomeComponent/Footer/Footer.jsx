@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
     return (
-        <footer className="bg-white text-green-900 p-8 font-Rubik text-center">
+        <footer className="bg-white text-green-900 p-6 font-Rubik text-center">
             <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 shadow-sm pr-10 pl-10 p-4">
                 {/* Quick Links */}
                 <div className="mb-6  flex flex-col items-end text-left">
@@ -84,10 +84,6 @@ function Footer() {
                 </div>
             </div>
 
-            {/* Copyright */}
-            <div className="mt-8 text-center ">
-                <p className="text-violet-900 font-semibold">&copy; 2023 <span className='text-orange-600'>AgroConnectBazaar</span> . All rights reserved.</p>
-            </div>
         </footer>
     )
 }

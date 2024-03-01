@@ -2,7 +2,7 @@ import './App.css'
 import React from 'react'
 import { Outlet } from 'react-router-dom';
 import Navbar from './Components/HomeComponent/Navbar/Navbar';
-import Footer from './Components/HomeComponent/Footer/Footer';
+import Copyright from './Components/HomeComponent/Footer/Copyright';
 
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <>
       <Navbar />
       <Outlet />
-      <Footer />
+      <Copyright />
     </>
   )
 }

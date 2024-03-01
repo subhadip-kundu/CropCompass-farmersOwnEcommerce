@@ -5,6 +5,7 @@ import './index.css'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import Home from './Components/HomeComponent/Home/Home.jsx'
 import AboutUs from './Components/AboutUsComponent/AboutUs/AboutUs.jsx'
+import Sell from './Components/SellComponent/Sell.jsx'
 
 
 
@@ -14,7 +15,7 @@ const router = createBrowserRouter(
       <Route path='' element={<Home />}/>
       <Route path='about-us' element={<AboutUs/>}/>
       <Route path='shop' element={<AboutUs/>}/>
-      <Route path='sell' element={<AboutUs/>}/>
+      <Route path='sell' element={<Sell/>}/>
       <Route path='contact-us' element={<AboutUs/>}/>
     </Route>
   )
