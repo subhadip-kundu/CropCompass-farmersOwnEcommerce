@@ -36,7 +36,7 @@ function Footer() {
                     <h2 className="text-xl font-bold mb-4 hover:text-cyan-600">Contact Us</h2>
                     <p className="text-violet-900 font-semibold mb-2">123 Main Street</p>
                     <p className="text-violet-900 font-semibold mb-2">Bankura, West Bengal 722207</p>
-                    <p className="text-violet-900 font-semibold mb-2">Email: SS@agroconnectbazaar.com</p>
+                    <p className="text-violet-900 font-semibold mb-2">Email: SS@cropcompass.com</p>
                     <p className="text-violet-900 font-semibold">Phone: (+91) 1234567890</p>
                 </div>
 

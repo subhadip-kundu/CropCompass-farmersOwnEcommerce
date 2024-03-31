@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import companyLogo from '../../../assets/AgroConnectBazaar.png';
+import companyLogo from '../../../assets/cropcompass.png';
 import { NavLink, useNavigate } from 'react-router-dom';
 import DropdownIfLoggedIn from './DropdownIfLoggedIn';
 import DropdownIfLoggedOut from './DropdownIfLoggedOut';

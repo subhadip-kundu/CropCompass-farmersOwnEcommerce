@@ -27,7 +27,7 @@ function Contact() {
       <div className="mt-8 flex justify-center items-center space-x-6">
         <div className='flex flex-col justify-center items-center'>
           <FontAwesomeIcon icon={faEnvelope} className="text-green-500 text-3xl" />
-          <a href="mailto:Agroconnect@connect.com"><p className="text-gray-700 mt-2">Agroconnect@connect.com</p></a>
+          <a href="mailto:cropcompass@connect.com"><p className="text-gray-700 mt-2">cropcompass@connect.com</p></a>
         </div>
         <div className='flex flex-col justify-center items-center'>
           <FontAwesomeIcon icon={faPhoneAlt} className="text-green-500 text-3xl" />
@@ -35,7 +35,7 @@ function Contact() {
         </div>
         <div className='flex flex-col justify-center items-center'>
           <FontAwesomeIcon icon={faMapMarkerAlt} className="text-green-500 text-3xl" />
-          <p className="text-gray-700 mt-2">Agroconnect Headquarters, Bankura, India</p>
+          <p className="text-gray-700 mt-2">cropcompass Headquarters, Bankura, India</p>
         </div>
       </div>
     </div>
