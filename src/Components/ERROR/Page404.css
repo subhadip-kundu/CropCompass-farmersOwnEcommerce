@@ -1,0 +1,48 @@
+@keyframes el1Move {
+  0% {
+    top: 108px;
+    left: 102px;
+    opacity: 1;
+  }
+  100% {
+    top: -10px;
+    left: 22px;
+    opacity: 0;
+  }
+}
+@keyframes el2Move {
+  0% {
+    top: 92px;
+    left: 136px;
+    opacity: 1;
+  }
+  100% {
+    top: -10px;
+    left: 108px;
+    opacity: 0;
+  }
+}
+@keyframes el3Move {
+  0% {
+    top: 108px;
+    left: 180px;
+    opacity: 1;
+  }
+  100% {
+    top: 28px;
+    left: 276px;
+    opacity: 0;
+  }
+}
+
+.animate-el1 {
+  animation: el1Move 800ms linear infinite;
+}
+
+.animate-el2 {
+  animation: el2Move 800ms linear infinite;
+}
+
+.animate-el3 {
+  animation: el3Move 800ms linear infinite;
+}

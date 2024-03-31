@@ -8,10 +8,11 @@ const FarmerInputForm = () => {
     const [price, setPrice] = useState("");
     const [image, setImage] = useState(null);
     const [block, setBlock] = useState("");
+    const [category, setCategory] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         if (!image) {
             setErrorMessage("Please select an image.");
             return;
@@ -68,6 +69,31 @@ const FarmerInputForm = () => {
                             onChange={(e) => setItemName(e.target.value)}
                             required
                         />
+                    </div>
+                    <div className="mb-4">
+                        <label
+                            className="block text-gray-700 text-sm font-bold mb-2"
+                            htmlFor="category"
+                        >
+                            Item category
+                        </label>
+                        <select
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            value={category}
+                            onChange={(e) => setCategory(e.target.value)}
+                            required
+                        >
+                            <option value="">Select Category</option>
+                            <option value="Rice">Rice</option>
+                            <option value="Wheat">Wheat</option>
+                            <option value="Nuts">Nuts</option>
+                            <option value="Suger">Suger</option>
+                            <option value="Spices">Spices</option>
+                            <option value="Fruits">Fruits</option>
+                            <option value="Vegetables">Vegetables</option>
+                            <option value="Pulses">Pulses</option>
+                        </select>
+
                     </div>
                     <div className="mb-4">
                         <label

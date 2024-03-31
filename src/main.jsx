@@ -8,18 +8,20 @@ import AboutUs from './Components/AboutUsComponent/AboutUs/AboutUs.jsx'
 import Sell from './Components/Sell/Sell.jsx'
 import Contact from './Components/Contactsomponent/Contact.jsx'
 import Shop from './Components/Shop/Shop.jsx'
+import Page404 from './Components/ERROR/Page404.jsx'
 
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App/>}>
-      <Route path='' element={<Home />}/>
+      <Route path='' element={<Home />}/> 
       <Route path='about-us' element={<AboutUs/>}/>
       <Route path='shop' element={<Shop/>}/>
       <Route path='sell' element={<Sell/>}/>
       <Route path='contact-us' element={<Contact/>}/>
-    </Route>
+      <Route path='*' element={<Page404/>}/>
+    </Route> 
   )
 )
 
