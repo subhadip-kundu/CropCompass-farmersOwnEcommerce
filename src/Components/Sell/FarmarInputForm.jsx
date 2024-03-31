@@ -44,111 +44,113 @@ const FarmerInputForm = () => {
     };
 
     return (
-        <div className="flex w-full flex-col md:flex-row items-center justify-center">
-            <div className="w-1/2">
-                <img src={farmarImage} alt="" />
+        <div className="flex w-full flex-col md:flex-row items-center justify-between">
+            <div className="w-5/12">
+                <img src={farmarImage} alt="hut" />
             </div>
-            <div className="min-w-md max-w-lg mx-auto mt-8">
-                <form
-                    onSubmit={handleSubmit}
-                    className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-                >
-                    <div className="mb-4">
-                        <label
-                            className="block text-gray-700 text-sm font-bold mb-2"
-                            htmlFor="item-name"
-                        >
-                            Item Name
-                        </label>
-                        <input
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="item-name"
-                            type="text"
-                            placeholder="Enter item name"
-                            value={itemName}
-                            onChange={(e) => setItemName(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label
-                            className="block text-gray-700 text-sm font-bold mb-2"
-                            htmlFor="category"
-                        >
-                            Item category
-                        </label>
-                        <select
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            value={category}
-                            onChange={(e) => setCategory(e.target.value)}
-                            required
-                        >
-                            <option value="">Select Category</option>
-                            <option value="Rice">Rice</option>
-                            <option value="Wheat">Wheat</option>
-                            <option value="Nuts">Nuts</option>
-                            <option value="Suger">Suger</option>
-                            <option value="Spices">Spices</option>
-                            <option value="Fruits">Fruits</option>
-                            <option value="Vegetables">Vegetables</option>
-                            <option value="Pulses">Pulses</option>
-                        </select>
-
-                    </div>
-                    <div className="mb-4">
-                        <label
-                            className="block text-gray-700 text-sm font-bold mb-2"
-                            htmlFor="quantity"
-                        >
-                            Quantity
-                        </label>
-                        <div>
-                            <label className="mr-4">
-                                <input
-                                    type="radio"
-                                    value="weight"
-                                    checked={quantityType === "weight"}
-                                    onChange={() => setQuantityType("weight")}
-                                />
-                                By Weight (Kg)
+            <div className="min-w-md max-w-[52%] mx-auto mt-8 flex bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4">
+                <div className="w-1/2 pr-4">
+                    <form
+                        onSubmit={handleSubmit}
+                    >
+                        <div className="mb-4">
+                            <label
+                                className="block text-gray-700 text-sm font-bold mb-2"
+                                htmlFor="item-name"
+                            >
+                                Item Name
                             </label>
-                            <label>
-                                <input
-                                    type="radio"
-                                    value="count"
-                                    checked={quantityType === "count"}
-                                    onChange={() => setQuantityType("count")}
-                                />
-                                By Count
-                            </label>
+                            <input
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="item-name"
+                                type="text"
+                                placeholder="Enter item name"
+                                value={itemName}
+                                onChange={(e) => setItemName(e.target.value)}
+                                required
+                            />
                         </div>
-                        <input
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="quantity"
-                            type="number"
-                            placeholder={quantityType === "weight" ? "Enter weight in Kg" : "Enter count"}
-                            value={quantity}
-                            onChange={(e) => setQuantity(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label
-                            className="block text-gray-700 text-sm font-bold mb-2"
-                            htmlFor="price"
-                        >
-                            Price
-                        </label>
-                        <input
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="price"
-                            type="number"
-                            placeholder="Enter price"
-                            value={price}
-                            onChange={(e) => setPrice(e.target.value)}
-                            required
-                        />
-                    </div>
+                        <div className="mb-4">
+                            <label
+                                className="block text-gray-700 text-sm font-bold mb-2"
+                                htmlFor="category"
+                            >
+                                Item category
+                            </label>
+                            <select
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                value={category}
+                                onChange={(e) => setCategory(e.target.value)}
+                                required
+                            >
+                                <option value="">Select Category</option>
+                                <option value="Rice">Rice</option>
+                                <option value="Wheat">Wheat</option>
+                                <option value="Nuts">Nuts</option>
+                                <option value="Suger">Suger</option>
+                                <option value="Spices">Spices</option>
+                                <option value="Fruits">Fruits</option>
+                                <option value="Vegetables">Vegetables</option>
+                                <option value="Pulses">Pulses</option>
+                            </select>
+                        </div>
+                        <div className="mb-4">
+                            <label
+                                className="block text-gray-700 text-sm font-bold mb-2"
+                                htmlFor="quantity"
+                            >
+                                Quantity
+                            </label>
+                            <div>
+                                <label className="mr-4">
+                                    <input
+                                        type="radio"
+                                        value="weight"
+                                        checked={quantityType === "weight"}
+                                        onChange={() => setQuantityType("weight")}
+                                    />
+                                    By Weight (Kg)
+                                </label>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        value="count"
+                                        checked={quantityType === "count"}
+                                        onChange={() => setQuantityType("count")}
+                                    />
+                                    By Count
+                                </label>
+                            </div>
+                            <input
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="quantity"
+                                type="number"
+                                placeholder={quantityType === "weight" ? "Enter weight in Kg" : "Enter count"}
+                                value={quantity}
+                                onChange={(e) => setQuantity(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label
+                                className="block text-gray-700 text-sm font-bold mb-2"
+                                htmlFor="price"
+                            >
+                                Price
+                            </label>
+                            <input
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="price"
+                                type="number"
+                                placeholder="Enter price"
+                                value={price}
+                                onChange={(e) => setPrice(e.target.value)}
+                                required
+                            />
+                        </div>
+                    </form>
+                </div>
+                <div className="w-1/2 pl-4">
                     <div className="mb-4">
                         <label
                             className="block text-gray-700 text-sm font-bold mb-2"
@@ -186,7 +188,6 @@ const FarmerInputForm = () => {
                             <option value="Kotulpur">Kotulpur</option>
                             <option value="Sonamukhi">Sonamukhi</option>
                         </select>
-
                     </div>
                     <div className="mb-4">
                         <label
@@ -205,8 +206,7 @@ const FarmerInputForm = () => {
                             <p className="text-red-500 text-xs italic">{errorMessage}</p>
                         )}
                     </div>
-
-                    <div className="mb-4">
+                    <div className="my-8">
                         <label
                             className="block text-gray-700 text-sm font-bold mb-2"
                             htmlFor="image"
@@ -223,16 +223,17 @@ const FarmerInputForm = () => {
                             <p className="text-red-500 text-xs italic">{errorMessage}</p>
                         )}
                     </div>
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-center mt-10">
                         <button
-                            className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-14 rounded focus:outline-none focus:shadow-outline"
                             type="submit"
                         >
                             Submit
                         </button>
                     </div>
-                </form>
+                </div>
             </div>
+
         </div>
     );
 };
