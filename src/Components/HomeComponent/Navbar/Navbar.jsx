@@ -1,9 +1,28 @@
-import React from 'react'
-import companyLogo from '../../../assets/AgroConnectBazaar.png'
-import { Link, NavLink } from 'react-router-dom'
-
+import React, { useState } from 'react';
+import companyLogo from '../../../assets/AgroConnectBazaar.png';
+import { Link, NavLink } from 'react-router-dom';
+import DropdownIfLoggedIn from './DropdownIfLoggedIn';
+import DropdownIfLoggedOut from './DropdownIfLoggedOut';
 
 function Navbar() {
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    // Add your login logic here
+  };
+
+  const handleLogout = () => {
+    
+    setIsLoggedIn(false);
+    // Add your logout logic here
+  };
+
   return (
     <div>
       <nav className="flex justify-between w-full bg-green-50 pl-10 p-2 pr-10 align-middle ">
@@ -32,7 +51,17 @@ function Navbar() {
           </ul>
         </section>
         <section className="flex gap-8 pt-6">
-          <i className="fa-regular fa-user cursor-pointer hover:scale-105 duration-200"></i>
+          {isLoggedIn ? (
+            <React.Fragment>
+              <i className="fa-regular fa-user cursor-pointer hover:scale-105 duration-200" onClick={toggleDropdown}></i>
+              {showDropdown && <DropdownIfLoggedOut onLogout={handleLogout} />}
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <i className="fa-regular fa-user cursor-pointer hover:scale-105 duration-200" onClick={handleLogin}></i>
+              {showDropdown && <DropdownIfLoggedIn />}
+            </React.Fragment>
+          )}
           <i className="fa-solid fa-cart-shopping cursor-pointer hover:scale-105 duration-200"></i>
         </section>
       </nav>

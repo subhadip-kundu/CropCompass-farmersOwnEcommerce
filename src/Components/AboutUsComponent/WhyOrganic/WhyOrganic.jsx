@@ -32,7 +32,7 @@ function WhyOrganic() {
                         <div className='w-3/4'>
                             <img src={whyOrganic} alt="whyOrganic" />
                         </div>
-                        <div class="flex w-full font-Rubik px-4 flex-col gap-4">
+                        <div className="flex w-full font-Rubik px-4 flex-col gap-4">
                             <div>
                                 <h3 className='text-green-700 text-lg'>Tastes <b>better</b></h3>
                                 <p>OUR Organic products ensure amazing, mesmerizing taste.</p>

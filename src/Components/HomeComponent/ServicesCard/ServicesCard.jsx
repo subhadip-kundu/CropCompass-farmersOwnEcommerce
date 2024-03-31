@@ -23,8 +23,8 @@ function ServicesCard() {
           <div className="mt-20 test ">
             <Slider {...settings}>
               {
-                data.map((item) => (
-                  <div className='duration-300 bg-white h-[450px] text-green-950 rounded-2xl border-4 border-white  hover:border-4 hover:border-green-500 box-border outline-none font-Rubik text-center'>
+                data.map((item, index) => (
+                  <div key={index} className='duration-300 bg-white h-[450px] text-green-950 rounded-2xl border-4 border-white  hover:border-4 hover:border-green-500 box-border outline-none font-Rubik text-center'>
                     <div className='h-32 rounded-t-xl bg-transparent flex justify-center items-center'>
                       <img src={item.img} alt="Organic farming" className='h-20 w-20' />
                     </div>

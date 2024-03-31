@@ -3,6 +3,7 @@ import farmarImage from "../../assets/InputForrmFarmerMarket.png";
 
 const FarmerInputForm = () => {
     const [itemName, setItemName] = useState("");
+    const [quantityType, setQuantityType] = useState("weight");
     const [quantity, setQuantity] = useState("");
     const [price, setPrice] = useState("");
     const [image, setImage] = useState(null);
@@ -15,10 +16,10 @@ const FarmerInputForm = () => {
             setErrorMessage("Please select an image.");
             return;
         }
-        
+
         // Here you can handle the form submission, for example, by sending the data to a backend API
         console.log("Item Name:", itemName);
-        console.log("Quantity:", quantity);
+        console.log("Quantity:", quantity, quantityType);
         console.log("Price:", price);
         console.log("Block:", block);
         console.log("Image:", image);
@@ -75,11 +76,31 @@ const FarmerInputForm = () => {
                         >
                             Quantity
                         </label>
+                        <div>
+                            <label className="mr-4">
+                                <input
+                                    type="radio"
+                                    value="weight"
+                                    checked={quantityType === "weight"}
+                                    onChange={() => setQuantityType("weight")}
+                                />
+                                By Weight (Kg)
+                            </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    value="count"
+                                    checked={quantityType === "count"}
+                                    onChange={() => setQuantityType("count")}
+                                />
+                                By Count
+                            </label>
+                        </div>
                         <input
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="quantity"
                             type="number"
-                            placeholder="Enter quantity"
+                            placeholder={quantityType === "weight" ? "Enter weight in Kg" : "Enter count"}
                             value={quantity}
                             onChange={(e) => setQuantity(e.target.value)}
                             required
