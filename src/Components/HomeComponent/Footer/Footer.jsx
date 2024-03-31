@@ -7,24 +7,24 @@ function Footer() {
                 {/* Quick Links */}
                 <div className="mb-6  flex flex-col items-end text-left">
                     <h2 className="text-xl font-bold mb-4 hover:text-cyan-600" >Quick Links</h2>
-                    <ul className="list-none">
+                    <ul className="list-none font-medium">
                         <li>
-                            <a href="#" className="text-violet-900 font-semibold hover:underline ">
+                            <a href="#" className="text-violet-900 hover:underline ">
                                 Home
                             </a>
                         </li>
                         <li>
-                            <a href="#" className="text-violet-900 font-semibold hover:underline mr-10">
+                            <a href="#" className="text-violet-900 hover:underline mr-10">
                                 About Us
                             </a>
                         </li>
                         <li>
-                            <a href="#" className="text-violet-900 font-semibold hover:underline ">
+                            <a href="#" className="text-violet-900 hover:underline ">
                                 Services
                             </a>
                         </li>
                         <li>
-                            <a href="#" className="text-violet-900 font-semibold hover:underline ">
+                            <a href="#" className="text-violet-900 hover:underline ">
                                 Contact
                             </a>
                         </li>
@@ -34,16 +34,16 @@ function Footer() {
                 {/* Contact Information */}
                 <div className="mb-6">
                     <h2 className="text-xl font-bold mb-4 hover:text-cyan-600">Contact Us</h2>
-                    <p className="text-violet-900 font-semibold mb-2">123 Main Street</p>
-                    <p className="text-violet-900 font-semibold mb-2">Bankura, West Bengal 722207</p>
-                    <p className="text-violet-900 font-semibold mb-2">Email: SS@cropcompass.com</p>
-                    <p className="text-violet-900 font-semibold">Phone: (+91) 1234567890</p>
+                    <p className="text-violet-900 font-medium mb-2">123 Main Street</p>
+                    <p className="text-violet-900 font-medium mb-2">Bankura, West Bengal 722207</p>
+                    <p className="text-violet-900 font-medium mb-2">Email: SS@CropCompass.com</p>
+                    <p className="text-violet-900 font-medium">Phone: (+91) 1234567890</p>
                 </div>
 
                 {/* Newsletter Subscription */}
                 <div className="mb-6 ">
-                    <h2 className="text-xl font-bold mb-4 hover:text-cyan-600 ">Subscribe</h2>
-                    <p className="text-violet-900 font-semibold mb-2">
+                    <h2 className="text-xl font-medium mb-4 hover:text-cyan-600 ">Subscribe</h2>
+                    <p className="text-violet-900 font-medium mb-2">
                         Subscribe to our newsletter for exclusive offers and updates.
                     </p>
                     <div className="flex items-center border-[1px] rounded-full border-purple-800 w-fit">
@@ -61,22 +61,22 @@ function Footer() {
                     <h2 className="text-xl font-bold mb-4 hover:text-cyan-600">Site Map</h2>
                     <ul className="list-none">
                         <li>
-                            <a href="#" className="text-violet-900 font-semibold hover:underline">
+                            <a href="#" className="text-violet-900 font-medium hover:underline">
                                 Privacy Policy
                             </a>
                         </li>
                         <li>
-                            <a href="#" className="text-violet-900 font-semibold hover:underline">
+                            <a href="#" className="text-violet-900 font-medium hover:underline">
                                 Terms and Conditions
                             </a>
                         </li>
                         <li>
-                            <a href="#" className="text-violet-900 font-semibold hover:underline">
+                            <a href="#" className="text-violet-900 font-medium hover:underline">
                                 Careers
                             </a>
                         </li>
                         <li>
-                            <a href="#" className="text-violet-900 font-semibold hover:underline">
+                            <a href="#" className="text-violet-900 font-medium hover:underline">
                                 Site Map
                             </a>
                         </li>

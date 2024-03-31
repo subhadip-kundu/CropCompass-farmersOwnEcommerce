@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'slider-background-image': "linear-gradient(rgba(220, 252, 231, 0.9), rgba(220, 252 ,231, 0.9)), url('../src/assets/GreenBackground.jpg')",
-        'about-us-topsection-bg-img': "linear-gradient(rgba(252, 161, 3, 0.9), rgba(252, 161, 3, 0.9)), url('../src/assets/Vegitable_background.jpg')"
+        'slider-background-image': "linear-gradient(#1c607f, #44baef), url('../src/assets/GreenBackground.jpg')",
+        'about-us-topsection-bg-img': "linear-gradient(#15183f, #145b7b), url('../src/assets/Vegitable_background.jpg')"
       }
     },
     fontFamily: {

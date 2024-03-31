@@ -3,7 +3,7 @@
 }
 
 .slick-next:before {
-    color: #1cd12885;
+    color: #06608a85;
     font-size:2.7rem;
 }
 
@@ -13,12 +13,12 @@
 }
 
 .slick-prev:before {
-    color: #1cd1288c;
+    color: #06608a85;
     font-size:2.7rem;
 }
 
 .slick-dots {
-    background-color: rgb(220, 252, 231);
+    background-color: #017173;
     padding-bottom: 1rem;
 
 }
