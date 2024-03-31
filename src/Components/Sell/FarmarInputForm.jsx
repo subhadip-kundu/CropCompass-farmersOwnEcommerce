@@ -47,7 +47,7 @@ const FarmerInputForm = () => {
             <div className="w-1/2">
                 <img src={farmarImage} alt="" />
             </div>
-            <div className="max-w-md mx-auto mt-8">
+            <div className="min-w-md max-w-lg mx-auto mt-8">
                 <form
                     onSubmit={handleSubmit}
                     className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
@@ -168,6 +168,24 @@ const FarmerInputForm = () => {
                             htmlFor="image"
                         >
                             Item Picture (Max size: 500 KB)
+                        </label>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleImageChange}
+                            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        />
+                        {errorMessage && (
+                            <p className="text-red-500 text-xs italic">{errorMessage}</p>
+                        )}
+                    </div>
+
+                    <div className="mb-4">
+                        <label
+                            className="block text-gray-700 text-sm font-bold mb-2"
+                            htmlFor="image"
+                        >
+                            Certificate (Max size: 500 KB)
                         </label>
                         <input
                             type="file"

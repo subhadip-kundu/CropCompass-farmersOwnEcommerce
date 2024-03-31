@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import companyLogo from '../../../assets/AgroConnectBazaar.png';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import DropdownIfLoggedIn from './DropdownIfLoggedIn';
 import DropdownIfLoggedOut from './DropdownIfLoggedOut';
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
@@ -18,16 +19,37 @@ function Navbar() {
   };
 
   const handleLogout = () => {
-    
     setIsLoggedIn(false);
     // Add your logout logic here
   };
+
+  useEffect(() => {
+    // Add event listener when the component mounts
+    document.addEventListener("mousedown", handleClickOutside);
+    // Clean up event listener when the component unmounts
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      // Click occurred outside of the dropdown, close the dropdown
+      setShowDropdown(false);
+    }
+  };
+
+  let navigate = useNavigate(); 
+  const toHome = () =>{ 
+    let path = `/`; 
+    navigate(path);
+  }
 
   return (
     <div>
       <nav className="flex justify-between w-full bg-green-50 pl-10 p-2 pr-10 align-middle ">
         <section className="logo">
-          <img src={companyLogo} alt="Logo_image" className='w-44 cursor-pointer' />
+          <img src={companyLogo} alt="Logo_image" className='w-44 cursor-pointer' onClick={toHome}/>
         </section>
         <section className="pt-6">
           <ul>
@@ -50,7 +72,7 @@ function Navbar() {
             </li>
           </ul>
         </section>
-        <section className="flex gap-8 pt-6">
+        <section className="flex gap-8 pt-6" ref={dropdownRef}>
           {isLoggedIn ? (
             <React.Fragment>
               <i className="fa-regular fa-user cursor-pointer hover:scale-105 duration-200" onClick={toggleDropdown}></i>
