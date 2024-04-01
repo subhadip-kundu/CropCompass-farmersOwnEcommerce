@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import companyLogo from '../../../assets/CropCompass.png';
 import { NavLink, useNavigate } from 'react-router-dom';
 import DropdownIfLoggedIn from './DropdownIfLoggedIn';
 import DropdownIfLoggedOut from './DropdownIfLoggedOut';
+import companyLogo from '../../../assets/cropcompass.png';
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
