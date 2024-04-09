@@ -15,7 +15,7 @@ function Contact() {
     const message = form.current.message.value; // Accessing the value of the message textarea
   
     emailjs
-      .sendForm('service_tcp86zm', 'template_ldoqx2p', form.current, 'B_7NephVlmZWB5jIp' , {
+      .sendForm('service_if8h6ca', 'template_sqrv4nv', form.current, 'GyIxGuJKszHiA5GgB' , {
         user_name: name,
         user_email: email,
         message: message
