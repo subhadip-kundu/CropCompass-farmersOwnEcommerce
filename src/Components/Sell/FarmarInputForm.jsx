@@ -60,7 +60,7 @@ const FarmerInputForm = () => {
                   } catch (e) {
                     console.error("Error adding document: ", e);
                   }
-        
+
                 alert("Data stored successfully in Firestore");
                 // Reset form fields after successful submission
                 setItemName("");
