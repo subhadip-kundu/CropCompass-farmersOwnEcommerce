@@ -24,14 +24,14 @@ function ServicesCard() {
             <Slider {...settings}>
               {
                 data.map((item, index) => (
-                  <div key={index} className='duration-300 bg-white h-[450px] text-green-950 rounded-2xl border-4 border-white  hover:border-4 hover:border-green-500 box-border outline-none font-Rubik text-center'>
+                  <div key={index} className='duration-300 bg-white h-[400px] text-green-950 rounded-2xl border-4 border-white  hover:border-4 hover:border-cyan-500 box-border outline-none font-Rubik text-center'>
                     <div className='h-32 rounded-t-xl bg-transparent flex justify-center items-center'>
                       <img src={item.img} alt="Organic farming" className='h-20 w-20' />
                     </div>
                     <div className='flex flex-col justify-center items-center gap-4 p-4'>
                       <p className='text-3xl font-semibold'>{item.heading}</p>
                       <p className='text-lg'>{item.description}</p>
-                      <button className='bg-green-400 text-white text-lg px-6 py-1 rounded-xl hover:border-2 hover:bg-cyan-50 hover:text-black'>{item.button}</button>
+                      <button className='bg-cyan-400 text-white text-md px-6 py-1 mt-5 rounded-xl hover:border-2 hover:bg-cyan-50 hover:text-black'>{item.button}</button>
                     </div>
                   </div>
                 ))
