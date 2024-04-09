@@ -1,37 +1,83 @@
 import React, { useState } from "react";
-import farmarImage from "../../assets/InputForrmFarmerMarket.png";
+import { firestore, storage } from "../FireBase/Firebase";
+import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
+import {collection , addDoc} from 'firebase/firestore' ;
+import farmarImage from "../../assets/InputForrmFarmerMarket.png"; // Importing farmarImage from assets folder
 
 const FarmerInputForm = () => {
     const [itemName, setItemName] = useState("");
     const [quantityType, setQuantityType] = useState("weight");
     const [quantity, setQuantity] = useState("");
     const [price, setPrice] = useState("");
-    const [image, setImage] = useState(null);
     const [block, setBlock] = useState("");
     const [category, setCategory] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [image, setImage] = useState();
+    const [image2, setImage2] = useState();
 
-    const handleSubmit = (e) => {
-        // e.preventDefault();
-        if (!image) {
-            setErrorMessage("Please select an image.");
-            return;
-        }
 
-        // Here you can handle the form submission, for example, by sending the data to a backend API
-        console.log("Item Name:", itemName);
-        console.log("Quantity:", quantity, quantityType);
-        console.log("Price:", price);
-        console.log("Block:", block);
-        console.log("Image:", image);
-        // You can reset the form fields after submission if needed
-        setItemName("");
-        setQuantity("");
-        setPrice("");
-        setImage(null);
-        setBlock("");
-        setErrorMessage("");
-    };
+
+
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     if (!itemName || !quantity || !price || !block || !category || !image || !image2 ) {
+    //         setErrorMessage("Please fill out all fields and select an image.");
+    //         return;
+    //     }
+        const handleSubmit = async (e) => {
+            e.preventDefault();
+                if (!itemName || !quantity || !price || !block || !category || !image || !image2 ) {
+                    setErrorMessage("Please fill out all fields and select an image.");
+                    return;
+                }
+            try {
+                // For Images
+                const photoRef = ref(storage, `CropCompassDb/${Date.now()}-${image.name}`);
+                // Upload photo to Firebase Storage
+                await uploadBytes(photoRef, image);
+                // Get download URL for the uploaded photo
+                const imageUrl = await getDownloadURL(photoRef);
+        
+                const photoRef2 = ref(storage, `CropCompassDb/${Date.now()}-${image2.name}`);
+                // Upload photo to Firebase Storage
+                await uploadBytes(photoRef2, image2);
+                // Get download URL for the uploaded photo
+                const image2Url = await getDownloadURL(photoRef2);
+        
+                // Store form data along with image URLs in Firebase Firestore
+                try {
+                    const docRef = await addDoc(collection(firestore, "CropCompassFarmerInputFormContainData"), {
+                        itemName: itemName,
+                        quantityType: quantityType,
+                        quantity: quantity,
+                        price: price,
+                        block: block,
+                        category: category,
+                        imageUrl: imageUrl, // Store the image URL in Firestore
+                        image2Url: image2Url,
+                    });
+                    console.log("Document written with ID: ", docRef.id);
+                  } catch (e) {
+                    console.error("Error adding document: ", e);
+                  }
+        
+                alert("Data stored successfully in Firestore");
+                // Reset form fields after successful submission
+                setItemName("");
+                setQuantity("");
+                setPrice("");
+                setBlock("");
+                setCategory("");
+                setImage(null); // Reset image state
+                setImage2(null); // Reset image state
+        
+                // setErrorMessage("");
+            } catch (error) {
+                console.error("Error storing data in Firestore: ", error);
+                setErrorMessage("Error storing data in Firestore");
+            }
+        };
+        
 
     const handleImageChange = (e) => {
         const selectedImage = e.target.files[0];
@@ -40,6 +86,7 @@ const FarmerInputForm = () => {
         } else {
             setImage(selectedImage);
             setErrorMessage("");
+                        
         }
     };
 
@@ -209,14 +256,14 @@ const FarmerInputForm = () => {
                     <div className="my-8">
                         <label
                             className="block text-gray-700 text-sm font-bold mb-2"
-                            htmlFor="image"
+                            htmlFor="image2"
                         >
                             Certificate (Max size: 500 KB)
                         </label>
                         <input
                             type="file"
                             accept="image/*"
-                            onChange={handleImageChange}
+                            onChange={(e)=>setImage2(e.target.files[0])}
                             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         />
                         {errorMessage && (
@@ -227,10 +274,12 @@ const FarmerInputForm = () => {
                         <button
                             className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-14 rounded focus:outline-none focus:shadow-outline"
                             type="submit"
+                            onClick={handleSubmit} // Add onClick handler here
                         >
                             Submit
                         </button>
                     </div>
+
                 </div>
             </div>
 
