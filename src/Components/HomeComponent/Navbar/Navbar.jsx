@@ -47,9 +47,9 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="flex justify-between w-full bg-nav-background pl-10 p-2 pr-10 align-middle ">
+      <nav className="flex justify-between w-full bg-nav-background pl-10  pr-10 align-middle ">
         <section className="logo">
-          <img src={companyLogo} alt="Logo_image" className='w-44 cursor-pointer' onClick={toHome}/>
+          <img src={companyLogo} alt="Logo_image" className='w-24 cursor-pointer' onClick={toHome}/>
         </section>
         <section className="pt-6">
           <ul>
