@@ -9,6 +9,7 @@ import Sell from './Components/Sell/Sell.jsx'
 import Contact from './Components/Contactsomponent/Contact.jsx'
 import Shop from './Components/Shop/Shop.jsx'
 import Page404 from './Components/ERROR/Page404.jsx'
+import Success from './Components/Success.jsx'
 
 
 
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
       <Route path='shop' element={<Shop/>}/>
       <Route path='sell' element={<Sell/>}/>
       <Route path='contact-us' element={<Contact/>}/>
+      <Route path='contact-us/Success' element={<Success/>}/>
       <Route path='*' element={<Page404/>}/>
     </Route> 
   )

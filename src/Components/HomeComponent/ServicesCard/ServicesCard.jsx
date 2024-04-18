@@ -18,20 +18,20 @@ function ServicesCard() {
   };
   return (
     <>
-      <div className="w-full pt-14 pb-32 bg-slider-background-image flex">
+      <div className="w-full pt-14 pb-32 flex bg-green-50">
         <div className='w-3/4 m-auto'>
           <div className="mt-20 test ">
             <Slider {...settings}>
               {
                 data.map((item, index) => (
-                  <div key={index} className='duration-300 bg-white h-[400px] text-green-950 rounded-2xl border-4 border-white  hover:border-4 hover:border-cyan-500 box-border outline-none font-Rubik text-center'>
+                  <div key={index} className='duration-300 bg-slate-100 h-[400px] text-green-950 rounded-2xl border-4 border-white  hover:border-4 hover:border-cyan-500 hover:shadow-2xl hover:shadow-white box-border outline-none font-Rubik text-center'>
                     <div className='h-32 rounded-t-xl bg-transparent flex justify-center items-center'>
                       <img src={item.img} alt="Organic farming" className='h-20 w-20' />
                     </div>
                     <div className='flex flex-col justify-center items-center gap-4 p-4'>
                       <p className='text-3xl font-semibold'>{item.heading}</p>
                       <p className='text-lg'>{item.description}</p>
-                      <button className='bg-cyan-400 text-white text-md px-6 py-1 mt-5 rounded-xl hover:border-2 hover:bg-cyan-50 hover:text-black'>{item.button}</button>
+                      <button className='bg-[#017173] text-white text-md px-6 py-1 mt-5 rounded-xl hover:border-2 hover:bg-cyan-50 hover:text-green-800'>{item.button}</button>
                     </div>
                   </div>
                 ))

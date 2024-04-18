@@ -47,7 +47,7 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="flex justify-between w-full bg-nav-background pl-10  pr-10 align-middle ">
+      <nav className="flex justify-between w-full bg-white pl-10  pr-10 align-middle ">
         <section className="logo">
           <img src={companyLogo} alt="Logo_image" className='w-24 cursor-pointer' onClick={toHome}/>
         </section>
@@ -55,19 +55,19 @@ function Navbar() {
           <ul>
             <li className='flex justify-center gap-6 font-bold font-Rubik '>
               <NavLink to="/" className={({ isActive }) => `
-                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-white"}
+                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-black"}
               `}>Home</NavLink>
               <NavLink to="/about-us" className={({ isActive }) => `
-                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-white"}
+                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-black"}
               `}>About Us</NavLink>
               <NavLink to="/shop" className={({ isActive }) => `
-                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-white"}
+                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-black"}
               `}>Shop</NavLink>
               <NavLink to="/sell" className={({ isActive }) => `
-                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-white"}
+                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-black"}
               `}>Sell</NavLink>
               <NavLink to="/contact-us" className={({ isActive }) => `
-                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-white"}
+                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-black"}
               `}>Contact Us</NavLink>
             </li>
           </ul>

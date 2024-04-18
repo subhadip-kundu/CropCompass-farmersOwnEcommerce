@@ -6,12 +6,12 @@
   margin: 0 10px;
 }
 .test .slick-prev:before {
-  color: #0b79ac;
+  color: #1fbe34;
   font-size: 2.5rem;
   margin-left: -200px;
 }
 .test .slick-next:before {
-  color: #0b79ac;
+  color: #1fbe34;
   font-size: 2.5rem;
   margin-right: -260px;
 }

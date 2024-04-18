@@ -7,8 +7,6 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'slider-background-image': "linear-gradient(#1c607f, #44baef)",
-        'nav-background': "linear-gradient(#1c607f, #44baef)",
         'about-us-topsection-bg-img': "linear-gradient(#15183f, #145b7b), url('../src/assets/Vegitable_background.jpg')"
       }
     },

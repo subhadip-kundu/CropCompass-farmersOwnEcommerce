@@ -1,21 +1,24 @@
 import React, { useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPhoneAlt, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from "react-router-dom";
 import emailjs from 'emailjs-com';
-
 
 function Contact() {
   const form = useRef();
+  const navigate = useNavigate();
+  const path = `/Success`;
+
 
   const sendEmail = (e) => {
     e.preventDefault();
-  
+
     const name = form.current.user_name.value; // Accessing the value of the name input field
     const email = form.current.user_email.value; // Accessing the value of the email input field
     const message = form.current.message.value; // Accessing the value of the message textarea
-  
+
     emailjs
-      .sendForm('service_tcp86zm', 'template_ldoqx2p', form.current, 'B_7NephVlmZWB5jIp' , {
+      .sendForm('service_if8h6ca', 'template_sqrv4nv', form.current, 'GyIxGuJKszHiA5GgB', {
         user_name: name,
         user_email: email,
         message: message
@@ -23,7 +26,8 @@ function Contact() {
       .then(
         (result) => {
           console.log(result.text);
-          alert('Email sent successfully!');
+          // alert('Email sent successfully!');
+          navigate(path);
           form.current.reset();
         },
         (error) => {
@@ -32,10 +36,10 @@ function Contact() {
         }
       );
   };
-  
-    
-    // .sendForm('service_tcp86zm', 'template_ldoqx2p', form.current, 'B_7NephVlmZWB5jIp')
-  
+
+
+  // .sendForm('service_tcp86zm', 'template_ldoqx2p', form.current, 'B_7NephVlmZWB5jIp')
+
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100">
