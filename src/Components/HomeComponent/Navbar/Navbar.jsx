@@ -5,7 +5,7 @@ import DropdownIfLoggedOut from './DropdownIfLoggedOut';
 import companyLogo from '../../../assets/cropcompass.png';
 
 function Navbar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -47,7 +47,7 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="flex justify-between w-full bg-white pl-10  pr-10 align-middle ">
+      <nav className="flex justify-between w-full bg-gray-50 pl-10  pr-10 align-middle ">
         <section className="logo">
           <img src={companyLogo} alt="Logo_image" className='w-24 cursor-pointer' onClick={toHome}/>
         </section>
