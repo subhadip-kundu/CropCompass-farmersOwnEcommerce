@@ -12,12 +12,12 @@ const LoginSignup = () => {
     <div className='flex justify-center mt-32 w-full h-[93vh] font-Rubik'>
       <div className="bg-white  min-w-[450px] ">
         <div className="form bg-green-700 rounded-lg overflow-hidden shadow-md max-w-md p-2">
-          <ul className="tab-group flex w-full items-center justify-around text-white mb-3">
+          <ul className="tab-group flex w-full items-center justify-around text-white mb-3 ">
             <li className={activeTab === 'signup' ? 'tab active' : 'tab'}>
-              <button onClick={() => handleTabChange('signup')} className={activeTab === 'signup' ? 'block py-4 px-6 scale-105 font-medium' : 'block py-4 px-6'}>Sign Up</button>
+              <button onClick={() => handleTabChange('signup')} className={activeTab === 'signup' ? 'block py-4 px-6 text-lg  font-medium' : 'block py-4 px-6'}>Sign Up</button>
             </li>
             <li className={activeTab === 'login' ? 'tab active' : 'tab'}>
-              <button onClick={() => handleTabChange('login')} className={activeTab === 'login' ? 'block py-4 px-6 scale-105  font-medium' : 'block py-4 px-6'}>Log In</button>
+              <button onClick={() => handleTabChange('login')} className={activeTab === 'login' ? 'block py-4 px-6 text-lg  font-medium' : 'block py-4 px-6'}>Log In</button>
             </li>
           </ul>
 
