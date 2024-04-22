@@ -3,6 +3,7 @@ import { firestore, storage } from "../FireBase/Firebase";
 import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import {collection , addDoc} from 'firebase/firestore' ;
 import farmarImage from "../../assets/InputForrmFarmerMarket.png"; // Importing farmarImage from assets folder
+import { useNavigate } from "react-router-dom";
 
 const FarmerInputForm = () => {
     const [itemName, setItemName] = useState("");
@@ -14,9 +15,9 @@ const FarmerInputForm = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const [image, setImage] = useState();
     const [image2, setImage2] = useState();
-
-
-
+    const navigate = useNavigate();
+    const path = `/Success`;
+    
 
     // const handleSubmit = async (e) => {
     //     e.preventDefault();
@@ -57,6 +58,9 @@ const FarmerInputForm = () => {
                         image2Url: image2Url,
                     });
                     console.log("Document written with ID: ", docRef.id);
+
+                    //Navigate to the success page
+                    navigate(path);
                   } catch (e) {
                     console.error("Error adding document: ", e);
                   }
