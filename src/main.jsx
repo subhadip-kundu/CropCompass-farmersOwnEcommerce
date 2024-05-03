@@ -12,22 +12,23 @@ import Page404 from './Components/ERROR/Page404.jsx'
 import Success from './Components/Success.jsx'
 import LoginSignup from './Components/LoginSignup.jsx'
 import Shoping from './Components/Shop/Shoping.jsx'
-
+import { store } from './redux/store.js'
+import { Provider } from 'react-redux'
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<App/>}>
-      <Route path='' element={<Home />}/> 
-      <Route path='about-us' element={<AboutUs/>}/>
-      <Route path='shop' element={<Shop/>}/>
-      <Route path='sell' element={<Sell/>}/>
-      <Route path='contact-us' element={<Contact/>}/>
-      <Route path='Success' element={<Success/>}/>
-      <Route path='register' element={<LoginSignup/>}/>
-      <Route path='shoping' element={<Shoping/>}/>
-      <Route path='*' element={<Page404/>}/>
-    </Route> 
+    <Route path='/' element={<App />}>
+      <Route path='' element={<Home />} />
+      <Route path='about-us' element={<AboutUs />} />
+      <Route path='shop' element={<Shop />} />
+      <Route path='sell' element={<Sell />} />
+      <Route path='contact-us' element={<Contact />} />
+      <Route path='Success' element={<Success />} />
+      <Route path='register' element={<LoginSignup />} />
+      <Route path='shoping' element={<Shoping />} />
+      <Route path='*' element={<Page404 />} />
+    </Route>
   )
 )
 
@@ -35,6 +36,8 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>,
 )

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Shoping from './Shoping.jsx';
 import RiceImage from '../../assets/Rice.jpeg';
 import WheatImage from '../../assets/Wheat.jpeg';
 import NutsImage from '../../assets/Nuts.jpeg';
@@ -9,6 +8,8 @@ import FruitsImage from '../../assets/Fruits.jpeg';
 import VegetablesImage from '../../assets/Vegitablee.jpeg';
 import PulsesImage from '../../assets/Pulses.jpeg';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
+import { category } from '../../redux/category/categorySlice';
 
 const categories = [
     { name: "Rice", image: RiceImage },
@@ -35,24 +36,16 @@ function CategoryCard({ backgroundImage, categoryName, onClick }) {
 }
 
 function FoodGrid() {
-    const [selectedCategory, setSelectedCategory] = useState(null);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    useEffect(() => {
-        if (selectedCategory !== undefined && selectedCategory !== null) {
-            let path = `/shoping`;
-            navigate(path);
-            console.log("selectedCategory in FoodGrid Condition :", selectedCategory);
-        }
-    }, [selectedCategory, navigate]);
 
-    const onClicked = (categoryName) => {
-        setSelectedCategory(categoryName);
+    const onClicked = async (categoryName) => {
+        await dispatch(category(categoryName)); // Dispatch setCategory action and wait for it to complete
+        let path = `/shoping`;
+        navigate(path);
+        console.log("selectedCategory in FoodGrid Condition :", categoryName);
     };
-
-    console.log("selectedCategory in FoodGrid:", selectedCategory);
-
-
 
     return (
         <div className="flex flex-col w-full font-Rubik">

@@ -1,9 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import ProductCard from './ProductCard';
 
-const Shoping = (props) => {
-    let category = props.category;
-    console.log("selectedCategory in Shoping:", category);
+const Shoping = () => {
+    const categories = useSelector((state) => state.category.value);
+    console.log("selectedCategory in Shoping:", categories);
 
     // Example data
     const products = [
@@ -25,12 +26,12 @@ const Shoping = (props) => {
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {products
+            {/* {products
                 .filter((pro) => pro.category === category)
                 .map(product => (
                     <ProductCard key={product.id} item={product} />
                 ))
-            }
+            } */}
         </div>
     );
 };
