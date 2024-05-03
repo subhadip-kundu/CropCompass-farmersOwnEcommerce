@@ -11,6 +11,7 @@ import Shop from './Components/Shop/Shop.jsx'
 import Page404 from './Components/ERROR/Page404.jsx'
 import Success from './Components/Success.jsx'
 import LoginSignup from './Components/LoginSignup.jsx'
+import Shoping from './Components/Shop/Shoping.jsx'
 
 
 
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
       <Route path='contact-us' element={<Contact/>}/>
       <Route path='Success' element={<Success/>}/>
       <Route path='register' element={<LoginSignup/>}/>
+      <Route path='shoping' element={<Shoping/>}/>
       <Route path='*' element={<Page404/>}/>
     </Route> 
   )
