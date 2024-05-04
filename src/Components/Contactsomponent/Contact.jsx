@@ -10,32 +10,31 @@ function Contact() {
   const path = `/Success`;
 
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
-
-    const name = form.current.user_name.value; // Accessing the value of the name input field
-    const email = form.current.user_email.value; // Accessing the value of the email input field
-    const message = form.current.message.value; // Accessing the value of the message textarea
-
-    emailjs
-      .sendForm('service_if8h6ca', 'template_sqrv4nv', form.current, 'GyIxGuJKszHiA5GgB', {
-        user_name: name,
-        user_email: email,
-        message: message
-      })
-      .then(
-        (result) => {
-          console.log(result.text);
-          // alert('Email sent successfully!');
-          navigate(path);
-          form.current.reset();
-        },
-        (error) => {
-          console.log(error.text);
-          alert('Failed to send email. Please try again later.');
-        }
+  
+    const formData = new FormData(form.current); // Create FormData object from the form
+    const name = formData.get('user_name'); // Accessing the value of the name input field
+    const email = formData.get('user_email'); // Accessing the value of the email input field
+    const message = formData.get('message'); // Accessing the value of the message textarea
+  
+    try {
+      await emailjs.sendForm(
+        'service_if8h6ca',
+        'template_sqrv4nv',
+        form.current,
+        'GyIxGuJKszHiA5GgB',
+        { user_name: name, user_email: email, message: message }
       );
+      console.log('Email sent successfully!');
+      navigate(path);
+      form.current.reset();
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      alert('Failed to send email. Please try again later.');
+    }
   };
+  
 
 
   // .sendForm('service_tcp86zm', 'template_ldoqx2p', form.current, 'B_7NephVlmZWB5jIp')
