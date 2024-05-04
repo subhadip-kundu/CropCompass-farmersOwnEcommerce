@@ -6,7 +6,7 @@ import GreenApple from '../../../assets/GreenApple.png'
 function Welcome() {
     return (
         <div>
-            <div className="flex mt-4 justify-center items-center w-full h-full p-10 text-center font-Rubik">
+            <div className="flex mt-4 bg-[#EBEAEA]  justify-center items-center w-full h-full p-10 text-center font-Rubik">
                 <div>
                     <img className="w-11/12" src={AppleBucket} alt="Apple bucket" />
                 </div>
