@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { firestore, storage } from "../FireBase/Firebase";
+import React, { useState , useEffect } from "react";
+import { firestore, storage , auth } from "../FireBase/Firebase";
 import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import {collection , addDoc} from 'firebase/firestore' ;
 import farmarImage from "../../assets/InputForrmFarmerMarket.png"; // Importing farmarImage from assets folder
 import { useNavigate } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+
 
 const FarmerInputForm = () => {
     const [itemName, setItemName] = useState("");
@@ -17,6 +19,9 @@ const FarmerInputForm = () => {
     const [image2, setImage2] = useState();
     const navigate = useNavigate();
     const path = `/Success`;
+    const [user, setUser] = useState(null);
+
+    
     
 
     // const handleSubmit = async (e) => {
@@ -94,7 +99,27 @@ const FarmerInputForm = () => {
         }
     };
 
+
+
+    
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+              console.log("user", user);
+            setUser(user);
+          } else {
+            setUser(null);
+          }
+        });
+        // Cleanup function to unsubscribe from the auth state listener
+      // return () => unsubscribe();
+      }, [])
+
+
+
     return (
+
+        user ? (
         <div className="flex w-full flex-col md:flex-row items-center justify-between">
             <div className="w-5/12">
                 <img src={farmarImage} alt="hut" />
@@ -288,6 +313,9 @@ const FarmerInputForm = () => {
             </div>
 
         </div>
+         ) : (
+            <div>You must be logged in to view this page.</div>
+        )
     );
 };
 

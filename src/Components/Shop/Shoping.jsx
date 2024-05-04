@@ -2,14 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ProductCard from './ProductCard';
 import { collection, getDocs } from "firebase/firestore";
-import { firestore } from '../FireBase/Firebase';
+import { firestore , auth} from '../FireBase/Firebase';
+import { onAuthStateChanged } from "firebase/auth";
+
+
 
 const Shoping = () => {
     const categories = useSelector((state) => state.category.value);
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [user, setUser] = useState(null);
 
+    
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -26,6 +32,26 @@ const Shoping = () => {
         fetchData();
     }, []);
 
+
+
+  
+    useEffect(() => {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+            console.log("user", user);
+          setUser(user);
+        } else {
+          setUser(null);
+        }
+      });
+      // Cleanup function to unsubscribe from the auth state listener
+    // return () => unsubscribe();
+    }, [])
+
+
+
+
+
     if (loading) {
         return <div>Loading...</div>; // Display a loading indicator while data is being fetched
     }
@@ -35,46 +61,21 @@ const Shoping = () => {
     }
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {products
-                .filter(product => categories ? product.category === categories : true) // Filter products based on categories
-                .map(product => (
-                    <ProductCard key={product.id} item={product} />
-                ))
-            }
-        </div>
+        user ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {products
+                    .filter(product => categories ? product.category === categories : true) // Filter products based on categories
+                    .map(product => (
+                        <ProductCard key={product.id} item={product} />
+                    ))
+                }
+            </div>
+        ) : (
+            <div>You must be logged in to view this page.</div>
+        )
     );
-};
+}
 
 export default Shoping;
 
 
-
- // Example data
-    // const products = [
-    //     {
-    //         id: 1,
-    //         name: 'Product 1',
-    //         price: 10,
-    //         category: 'Rice',
-    //         image: 'product1.jpg'
-    //     },
-    //     {
-    //         id: 2,
-    //         name: 'Product 2',
-    //         price: 20,
-    //         category: 'Nuts',
-    //         image: 'product2.jpg'
-    //     }
-    // ];
-
-    // return (
-    //     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    //         {products
-    //             .filter((pro) => pro.category === categories)
-    //             .map(product => (
-    //                 <ProductCard key={product.id} item={product} />
-    //             ))
-    //         }
-    //     </div>
-    // );
