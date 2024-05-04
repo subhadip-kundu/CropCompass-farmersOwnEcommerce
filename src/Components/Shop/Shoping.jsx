@@ -1,10 +1,26 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import ProductCard from './ProductCard';
+import { collection, getDocs } from "firebase/firestore";
+import { firestore, storage } from '../FireBase/Firebase';
 
-const Shoping = () => {
+const Shoping = async() => {
     const categories = useSelector((state) => state.category.value);
     console.log("selectedCategory in Shoping:", categories);
+
+
+   
+//get data from firebase
+const querySnapshot = await getDocs(collection(firestore
+    , "CropCompassFarmerInputFormContainData"));
+querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  console.log(doc.id, " => ", doc.data());
+  console.log(doc.id, " => ", doc.data().category);
+
+});
+
+
 
     // Example data
     const products = [
@@ -37,3 +53,5 @@ const Shoping = () => {
 };
 
 export default Shoping;
+
+
