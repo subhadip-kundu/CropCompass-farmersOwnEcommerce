@@ -14,6 +14,7 @@ import LoginSignup from './Components/LoginSignup.jsx'
 import Shoping from './Components/Shop/Shoping.jsx'
 import { store } from './redux/store.js'
 import { Provider } from 'react-redux'
+import ContactSubmit from './Components/ContactSubmit.jsx'
 
 
 const router = createBrowserRouter(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
       <Route path='sell' element={<Sell />} />
       <Route path='contact-us' element={<Contact />} />
       <Route path='Success' element={<Success />} />
+      <Route path='ContactSubmitted' element={<ContactSubmit />} />
       <Route path='register' element={<LoginSignup />} />
       <Route path='shoping' element={<Shoping />} />
       <Route path='*' element={<Page404 />} />

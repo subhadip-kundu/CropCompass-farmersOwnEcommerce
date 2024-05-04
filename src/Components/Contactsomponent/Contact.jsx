@@ -7,17 +7,17 @@ import emailjs from 'emailjs-com';
 function Contact() {
   const form = useRef();
   const navigate = useNavigate();
-  const path = `/Success`;
+  const path = `/ContactSubmitted`;
 
 
   const sendEmail = async (e) => {
     e.preventDefault();
-  
+
     const formData = new FormData(form.current); // Create FormData object from the form
     const name = formData.get('user_name'); // Accessing the value of the name input field
     const email = formData.get('user_email'); // Accessing the value of the email input field
     const message = formData.get('message'); // Accessing the value of the message textarea
-  
+
     try {
       await emailjs.sendForm(
         'service_if8h6ca',
@@ -34,7 +34,7 @@ function Contact() {
       alert('Failed to send email. Please try again later.');
     }
   };
-  
+
 
 
   // .sendForm('service_tcp86zm', 'template_ldoqx2p', form.current, 'B_7NephVlmZWB5jIp')

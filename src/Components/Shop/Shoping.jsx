@@ -35,13 +35,15 @@ const Shoping = () => {
     }
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {products
-                .filter(product => categories ? product.category === categories : true) // Filter products based on categories
-                .map(product => (
-                    <ProductCard key={product.id} item={product} />
-                ))
-            }
+        <div className=" min-h-screen p-5 bg-green-50 w-full">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                {products
+                    .filter(product => categories ? product.category === categories : true) // Filter products based on categories
+                    .map(product => (
+                        <ProductCard key={product.id} item={product} />
+                    ))
+                }
+            </div>
         </div>
     );
 };
@@ -50,31 +52,31 @@ export default Shoping;
 
 
 
- // Example data
-    // const products = [
-    //     {
-    //         id: 1,
-    //         name: 'Product 1',
-    //         price: 10,
-    //         category: 'Rice',
-    //         image: 'product1.jpg'
-    //     },
-    //     {
-    //         id: 2,
-    //         name: 'Product 2',
-    //         price: 20,
-    //         category: 'Nuts',
-    //         image: 'product2.jpg'
-    //     }
-    // ];
+// Example data
+// const products = [
+//     {
+//         id: 1,
+//         name: 'Product 1',
+//         price: 10,
+//         category: 'Rice',
+//         image: 'product1.jpg'
+//     },
+//     {
+//         id: 2,
+//         name: 'Product 2',
+//         price: 20,
+//         category: 'Nuts',
+//         image: 'product2.jpg'
+//     }
+// ];
 
-    // return (
-    //     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    //         {products
-    //             .filter((pro) => pro.category === categories)
-    //             .map(product => (
-    //                 <ProductCard key={product.id} item={product} />
-    //             ))
-    //         }
-    //     </div>
-    // );
+// return (
+//     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+//         {products
+//             .filter((pro) => pro.category === categories)
+//             .map(product => (
+//                 <ProductCard key={product.id} item={product} />
+//             ))
+//         }
+//     </div>
+// );
