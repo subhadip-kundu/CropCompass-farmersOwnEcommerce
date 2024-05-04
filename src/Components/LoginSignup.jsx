@@ -43,7 +43,7 @@ const LoginSignup = () => {
                   <input type="password" id="password" name="password" className="input w-full rounded-[5px] p-0.5 px-3 outline-none border-2 border-cyan-200 " required />
                 </div>
                 <button type="submit" class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-8 py-2 text-center m-3">Get Started</button>
-              </form>
+              </form> 
             </div>
 
             <div id="login" style={{ display: activeTab === 'login' ? 'block' : 'none' }}>
