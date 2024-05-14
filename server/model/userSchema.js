@@ -23,7 +23,7 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Password is required"],
       select: false,
-      minLength: [8, "Password must be atleast 5 char"],
+      minLength: [8, "Password must be atleast 8 char"],
       maxLength: [16, "Password must be less than 16 char"],
     },
     forgotPasswordToken: {

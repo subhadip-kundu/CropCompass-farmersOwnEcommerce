@@ -14,7 +14,7 @@ app.use(cors({
   credentials:true
 }));
 
-app.use("/api/auth/", authRouter);
+app.use("/api/auth/", authRouter); 
 
 app.use("/", (req, res) => {
   res.status(200).json({
