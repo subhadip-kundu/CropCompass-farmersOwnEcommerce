@@ -1,25 +1,43 @@
 // DropdownIfLoggedOut.js
-import React, { useState } from "react";
-const axios = require('axios');
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function DropdownIfLoggedIn({ onLogout }) {
   const [profile, setProfile] = useState(false);
+  const [userData, setUserData] = useState("");
   const onProfileClick = () => {
     setProfile(!profile);
   };
 
-  
+  useEffect(() => {
+    getUser();
+  }, []);
 
+  async function getUser() {
+    try {
+      const response = await axios({
+        method: "get",
+        url: "http://localhost:5000/api/auth/user",
+        withCredentials: true,
+      });
+
+      if (response.data.success) {
+        setUserData(response.data.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return profile ? (
-    <div className="absolute right-5 top-14 w-48 bg-white rounded-md shadow-lg z-20 border-2 border-blue-100 text-center font-medium">
+    <div className="absolute right-1 top-14  bg-white rounded-md shadow-lg z-20 border-2 border-blue-100 text-center font-medium">
       <div className="max-w-md w-full bg-white shadow-lg rounded-lg overflow-hidden">
         <div className="md:flex">
-          <div className="p-5 w-fit min-w-48">
+          <div className="p-5  min-w-56">
             <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
-              {'username'}
+              {userData.name}
             </div>
-            <p className="mt-2.5 text-gray-500">{'email'}</p>
+            <p className="mt-2.5 text-gray-500">{userData.email}</p>
           </div>
         </div>
       </div>

@@ -54,16 +54,18 @@ const LoginSignup = () => {
   const loginSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/signin",
-        loginFormData
-      );
+      const response = await axios({
+        method: "post",
+        url: "http://localhost:5000/api/auth/signin",
+        withCredentials: true,
+        data: loginFormData,
+      });
       await dispatch(isLogged(true));
       console.log(response.data); // Handle success response
       let path = `/`;
       navigate(path);
     } catch (error) {
-      console.error("Error:", error.message); // Handle error
+      console.error("Error:", error); // Handle error
       dispatch(isLogged(false));
     }
   };

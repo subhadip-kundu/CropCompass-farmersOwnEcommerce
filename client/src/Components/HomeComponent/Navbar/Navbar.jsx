@@ -4,6 +4,7 @@ import DropdownIfLoggedIn from "./DropdownIfLoggedIn";
 import companyLogo from "../../../assets/cropcompass.png";
 import { useDispatch, useSelector } from "react-redux";
 import { isLogged } from "../../../redux/logged/loggedSlice";
+import axios from "axios";
 
 function Navbar() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,9 +29,20 @@ function Navbar() {
     }
   };
 
-  const handleLogout = () => {
-    dispatch(isLogged(false));
-    setShowDropdown(false);
+  const handleLogout = async () => {
+    try {
+      const response = await axios({
+        method: "get",
+        url: "http://localhost:5000/api/auth/logout",
+        withCredentials: true,
+      });
+      if (response.data.success) {
+        dispatch(isLogged(false));
+        setShowDropdown(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
