@@ -1,13 +1,18 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import DropdownIfLoggedIn from './DropdownIfLoggedIn';
-import companyLogo from '../../../assets/cropcompass.png';
+import React, { useState, useEffect, useRef } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import DropdownIfLoggedIn from "./DropdownIfLoggedIn";
+import companyLogo from "../../../assets/cropcompass.png";
+import { useDispatch, useSelector } from "react-redux";
+import { isLogged } from "../../../redux/logged/loggedSlice";
 
 function Navbar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
   let navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const isLoggedIn = useSelector((state) => state.isLogged.value);
 
   const toggleDropdown = () => {
     if (isLoggedIn) {
@@ -24,7 +29,8 @@ function Navbar() {
   };
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
+    dispatch(isLogged(false));
+    setShowDropdown(false);
   };
 
   useEffect(() => {
@@ -46,44 +52,100 @@ function Navbar() {
   const toHome = () => {
     let path = `/`;
     navigate(path);
-  }
+  };
 
   return (
     <div>
       <nav className="flex justify-between w-full bg-[#EBEAEA] pl-10  pr-10 align-middle ">
         <section className="logo">
-          <img src={companyLogo} alt="Logo_image" className='w-24 cursor-pointer' onClick={toHome} />
+          <img
+            src={companyLogo}
+            alt="Logo_image"
+            className="w-24 cursor-pointer"
+            onClick={toHome}
+          />
         </section>
         <section className="pt-6">
           <ul>
-            <li className='flex justify-center gap-6 font-bold font-Rubik '>
-              <NavLink to="/" className={({ isActive }) => `
-                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-black"}
-              `}>Home</NavLink>
-              <NavLink to="/about-us" className={({ isActive }) => `
-                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-black"}
-              `}>About Us</NavLink>
-              <NavLink to="/shop" className={({ isActive }) => `
-                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-black"}
-              `}>Shop</NavLink>
-              <NavLink to="/sell" className={({ isActive }) => `
-                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-black"}
-              `}>Sell</NavLink>
-              <NavLink to="/contact-us" className={({ isActive }) => `
-                  text-lg duration-150  ${isActive ? "text-red-600 border-b-2 border-red-600 -mt-1" : "text-black"}
-              `}>Contact Us</NavLink>
+            <li className="flex justify-center gap-6 font-bold font-Rubik ">
+              <NavLink
+                to="/"
+                className={({ isActive }) => `
+                  text-lg duration-150  ${
+                    isActive
+                      ? "text-red-600 border-b-2 border-red-600 -mt-1"
+                      : "text-black"
+                  }
+              `}
+              >
+                Home
+              </NavLink>
+              <NavLink
+                to="/about-us"
+                className={({ isActive }) => `
+                  text-lg duration-150  ${
+                    isActive
+                      ? "text-red-600 border-b-2 border-red-600 -mt-1"
+                      : "text-black"
+                  }
+              `}
+              >
+                About Us
+              </NavLink>
+              <NavLink
+                to="/shop"
+                className={({ isActive }) => `
+                  text-lg duration-150  ${
+                    isActive
+                      ? "text-red-600 border-b-2 border-red-600 -mt-1"
+                      : "text-black"
+                  }
+              `}
+              >
+                Shop
+              </NavLink>
+              <NavLink
+                to="/sell"
+                className={({ isActive }) => `
+                  text-lg duration-150  ${
+                    isActive
+                      ? "text-red-600 border-b-2 border-red-600 -mt-1"
+                      : "text-black"
+                  }
+              `}
+              >
+                Sell
+              </NavLink>
+              <NavLink
+                to="/contact-us"
+                className={({ isActive }) => `
+                  text-lg duration-150  ${
+                    isActive
+                      ? "text-red-600 border-b-2 border-red-600 -mt-1"
+                      : "text-black"
+                  }
+              `}
+              >
+                Contact Us
+              </NavLink>
             </li>
           </ul>
         </section>
         <section className="flex gap-8 pt-6" ref={dropdownRef}>
           {isLoggedIn ? (
             <>
-              <i className="fa-regular fa-user cursor-pointer hover:scale-105 duration-200" onClick={toggleDropdown}></i>
+              <i
+                className="fa-regular fa-user cursor-pointer hover:scale-105 duration-200"
+                onClick={toggleDropdown}
+              ></i>
               {showDropdown && <DropdownIfLoggedIn onLogout={handleLogout} />}
             </>
           ) : (
             <>
-              <i className="fa-regular fa-user cursor-pointer hover:scale-105 duration-200" onClick={handleLogin}></i>
+              <i
+                className="fa-regular fa-user cursor-pointer hover:scale-105 duration-200"
+                onClick={handleLogin}
+              ></i>
               {showDropdown && <DropdownIfLoggedIn />}
             </>
           )}
@@ -91,7 +153,7 @@ function Navbar() {
         </section>
       </nav>
     </div>
-  )
+  );
 }
 
 export default Navbar;

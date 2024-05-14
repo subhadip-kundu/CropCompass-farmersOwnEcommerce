@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { isLogged } from "../redux/logged/loggedSlice";
+import { useNavigate } from "react-router-dom";
 
 const LoginSignup = () => {
+  // Redux state management
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [activeTab, setActiveTab] = useState("signup");
   const [signupFormData, setSignupFormData] = useState({
     name: "",
@@ -35,9 +42,12 @@ const LoginSignup = () => {
         "http://localhost:5000/api/auth/signup",
         signupFormData
       );
+      setActiveTab("login");
+
       console.log(response.data); // Handle success response
     } catch (error) {
       console.error("Error:", error); // Handle error
+      dispatch(isLogged(false));
     }
   };
 
@@ -48,9 +58,13 @@ const LoginSignup = () => {
         "http://localhost:5000/api/auth/signin",
         loginFormData
       );
+      await dispatch(isLogged(true));
       console.log(response.data); // Handle success response
+      let path = `/`;
+      navigate(path);
     } catch (error) {
       console.error("Error:", error.message); // Handle error
+      dispatch(isLogged(false));
     }
   };
 
@@ -215,7 +229,7 @@ const LoginSignup = () => {
                   >
                     Log In
                   </button>
-                </form> 
+                </form>
               </div>
             </div>
           </div>
