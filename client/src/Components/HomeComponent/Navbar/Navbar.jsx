@@ -68,16 +68,16 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="flex justify-between w-full bg-[#EBEAEA] pl-10  pr-10 align-middle ">
+      <nav className="flex justify-between w-full bg-[#EBEAEA] pl-10  pr-10 items-center ">
         <section className="logo">
           <img
             src={companyLogo}
             alt="Logo_image"
-            className="w-24 cursor-pointer"
+            className=" h-9 cursor-pointer"
             onClick={toHome}
           />
         </section>
-        <section className="pt-6">
+        <section className="p-3">
           <ul>
             <li className="flex justify-center gap-6 font-bold font-Rubik ">
               <NavLink
@@ -143,7 +143,7 @@ function Navbar() {
             </li>
           </ul>
         </section>
-        <section className="flex gap-8 pt-6" ref={dropdownRef}>
+        <section className="flex gap-8 px-3" ref={dropdownRef}>
           {isLoggedIn ? (
             <>
               <i
