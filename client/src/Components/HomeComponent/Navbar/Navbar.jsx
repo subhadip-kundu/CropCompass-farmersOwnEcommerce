@@ -68,7 +68,7 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="flex justify-between w-full bg-[#EBEAEA] pl-10  pr-10 items-center ">
+      <nav className="flex justify-between w-full bg-[#EBEAEA] pl-10  pr-10 items-center p-2.5">
         <section className="logo">
           <img
             src={companyLogo}

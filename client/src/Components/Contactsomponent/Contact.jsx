@@ -41,7 +41,7 @@ function Contact() {
 
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100">
+    <div className="min-h-screen flex flex-col justify-evenly items-center bg-gray-100">
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-md border-2 border-green-100">
         <h2 className="text-3xl font-semibold mb-4 text-center">Contact Us</h2>
         <p className="text-gray-700 mb-6">Have questions or feedback? Feel free to reach out to us. We would love to hear from you!</p>

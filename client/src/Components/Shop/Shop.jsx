@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const CenteredMessage = () => {
   return (
     <div className="flex items-center justify-center h-screen font-Rubik">
-      <h1 className="text-8xl font-bold leading-loose text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 animate-pulse">
+      <h1 className="text-8xl font-bold leading-loose text-transparent bg-clip-text bg-gradient-to-r from-lime-700 via-cyan-500 to-pink-500 animate-pulse">
       Please login first!
       </h1>
     </div>
