@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartPlus, faBolt } from "@fortawesome/free-solid-svg-icons";
+import { faCartPlus, faBolt, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const ProductCard = ({ item }) => {
   let [addCart, setAddCart] = useState([]);
@@ -28,7 +28,15 @@ const ProductCard = ({ item }) => {
         className="w-full h-52 border-b-2 border-cyan-100"
       />
       <div className="px-4 py-3">
-        <div className="font-medium text-xl mb-2 capitalize">{itemName}</div>
+        <div className="flex w-full justify-between pr-4">
+          <div className="font-medium text-xl mb-2 capitalize">{itemName}</div>
+          <button
+            className="bg-green-500 hover:bg-green-600 text-white font-semibold text-sm py-3 px-3 rounded-full flex  items-center justify-center"
+          >
+            {" "}
+            <FontAwesomeIcon icon={faPhone} /> 
+          </button>
+        </div>
         <p className="text-gray-700 text-base">Price: ₹{price}/-</p>
         <p className="text-gray-700 text-base">Area: {block}</p>
         <p className="text-gray-700 text-base">Quantity: {quantity} kg</p>
@@ -41,7 +49,7 @@ const ProductCard = ({ item }) => {
           <FontAwesomeIcon icon={faCartPlus} /> Add to Cart
         </button>
         <button
-          className="bg-green-500 hover:bg-green-700 text-white font-semibold text-sm py-2 px-4 rounded flex gap-2 items-center justify-center"
+          className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm py-2 px-4 rounded flex gap-2 items-center justify-center"
           onClick={handleBuyNow}
         >
           {" "}
