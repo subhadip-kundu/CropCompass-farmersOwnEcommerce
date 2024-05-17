@@ -15,7 +15,7 @@ const FarmerInputForm = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [image, setImage] = useState();
   const [image2, setImage2] = useState();
-  const [Number, setNumber] = useState("");
+  const [number, setNumber] = useState("");
   const navigate = useNavigate();
   const path = `/Success`;
 
@@ -35,7 +35,7 @@ const FarmerInputForm = () => {
       !category ||
       !image ||
       !image2 ||
-      !Number
+      !number
     ) {
       setErrorMessage("* Please fill out all fields and select an image.");
       return;
@@ -77,7 +77,7 @@ const FarmerInputForm = () => {
             category: category,
             imageUrl: imageUrl, // Store the image URL in Firestore
             image2Url: image2Url,
-            Number: Number,
+            number: number,
           }
         );
         console.log("Document written with ID: ", docRef.id);
