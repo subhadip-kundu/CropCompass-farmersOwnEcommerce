@@ -1,4 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { category } from "../../redux/category/categorySlice";
+import { useNavigate } from "react-router-dom";
+import { useCart } from "../../CartContext"; // Import useCart hook
 import RiceImage from "../../assets/Rice.jpeg";
 import WheatImage from "../../assets/Wheat.jpeg";
 import NutsImage from "../../assets/Nuts.jpeg";
@@ -7,9 +11,6 @@ import SpicesImage from "../../assets/Spices.jpg";
 import FruitsImage from "../../assets/Fruits.jpeg";
 import VegetablesImage from "../../assets/Vegitablee.jpeg";
 import PulsesImage from "../../assets/Pulses.jpeg";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { category } from "../../redux/category/categorySlice";
 
 const categories = [
   { name: "Rice", image: RiceImage },
@@ -43,12 +44,18 @@ function CategoryCard({ backgroundImage, categoryName, onClick }) {
 function FoodGrid() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { addToCart } = useCart(); // Access addToCart function from CartContext
 
   const onClicked = async (categoryName) => {
-    await dispatch(category(categoryName)); // Dispatch setCategory action and wait for it to complete
+    await dispatch(category(categoryName));
     let path = `/shoping`;
     navigate(path);
     console.log("selectedCategory in FoodGrid Condition :", categoryName);
+  };
+
+  const handleAddToCart = (itemName, price) => {
+    addToCart({ itemName, price, quantity: 1 }); // Add item to cart with quantity 1
+    console.log(`Added ${itemName} to cart`);
   };
 
   return (

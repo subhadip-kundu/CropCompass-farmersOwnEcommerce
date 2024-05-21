@@ -1,6 +1,7 @@
 import React from "react";
 import FoodGrid from "./FoodGrid";
 import { useSelector } from "react-redux";
+import { CartProvider } from "../../CartContext"; // Import CartProvider
 
 const CenteredMessage = () => {
   return (
@@ -14,7 +15,11 @@ const CenteredMessage = () => {
 
 function Shop() {
   const isLoggedIn = useSelector((state) => state.isLogged.value);
-  return isLoggedIn ? <FoodGrid /> : <CenteredMessage />;
+  return (
+    <CartProvider> {/* Wrap Shop with CartProvider */}
+      {isLoggedIn ? <FoodGrid /> : <CenteredMessage />}
+    </CartProvider>
+  );
 }
 
 export default Shop;

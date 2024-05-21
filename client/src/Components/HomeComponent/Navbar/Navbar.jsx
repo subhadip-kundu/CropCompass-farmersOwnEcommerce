@@ -143,7 +143,7 @@ function Navbar() {
             </li>
           </ul>
         </section>
-        <section className="flex gap-8 px-3" ref={dropdownRef}>
+        <section className="gap-8 px-3 flex items-center justify-center" ref={dropdownRef}>
           {isLoggedIn ? (
             <>
               <i
@@ -161,7 +161,9 @@ function Navbar() {
               {showDropdown && <DropdownIfLoggedIn />}
             </>
           )}
-          <i className="fa-solid fa-cart-shopping cursor-pointer hover:scale-105 duration-200"></i>
+          <NavLink to="/cart">
+            <i className="fa-solid fa-cart-shopping cursor-pointer hover:scale-105 duration-200"></i>
+          </NavLink>
         </section>
       </nav>
     </div>

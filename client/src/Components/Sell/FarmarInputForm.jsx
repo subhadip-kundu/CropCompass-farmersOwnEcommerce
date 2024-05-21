@@ -173,35 +173,12 @@ const FarmerInputForm = () => {
                 >
                   Quantity
                 </label>
-                <div>
-                  <label className="mr-4">
-                    <input
-                      type="radio"
-                      value="weight"
-                      checked={quantityType === "weight"}
-                      onChange={() => setQuantityType("weight")}
-                    />{" "}
-                    By Weight (Kg)
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      value="count"
-                      checked={quantityType === "count"}
-                      onChange={() => setQuantityType("count")}
-                    />{" "}
-                    By Count
-                  </label>
-                </div>
+                <div></div>
                 <input
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="quantity"
                   type="number"
-                  placeholder={
-                    quantityType === "weight"
-                      ? "Enter weight in Kg"
-                      : "Enter count"
-                  }
+                  placeholder="Enter weight in Kg"
                   value={quantity}
                   onChange={(e) => setQuantity(e.target.value)}
                   required
@@ -227,7 +204,7 @@ const FarmerInputForm = () => {
             </form>
           </div>
           <div className="w-1/2 pl-4">
-            <div className="mb-4">
+            <div className="mb-3">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
                 htmlFor="block"
@@ -265,7 +242,7 @@ const FarmerInputForm = () => {
                 <option value="Sonamukhi">Sonamukhi</option>
               </select>
             </div>
-            <div className="mb-4">
+            <div className="mb-2.5">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
                 htmlFor="image"
@@ -280,7 +257,7 @@ const FarmerInputForm = () => {
               />
               {/* {errorMessage && <p className="text-red-500 text-xs italic">{errorMessage}</p>} */}
             </div>
-            <div className="mt-8 mb-3">
+            <div className=" mb-3">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
                 htmlFor="image2"

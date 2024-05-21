@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import ProductCard from './ProductCard';
 import { collection, getDocs } from "firebase/firestore";
 import { firestore } from '../FireBase/Firebase';
+import LoadingSpinner from '../LoadingSpinner';
 
 const Shoping = () => {
     const categories = useSelector((state) => state.category.value);
@@ -27,7 +28,7 @@ const Shoping = () => {
     }, []);
 
     if (loading) {
-        return <div>Loading...</div>; // Display a loading indicator while data is being fetched
+        return <LoadingSpinner/>; // Display a loading indicator while data is being fetched
     }
 
     if (error) {
