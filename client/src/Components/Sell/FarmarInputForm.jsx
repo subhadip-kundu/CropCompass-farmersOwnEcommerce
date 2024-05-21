@@ -40,7 +40,7 @@ const FarmerInputForm = () => {
       setErrorMessage("* Please fill out all fields and select an image.");
       return;
     }
-    if (Number.length !== 10) {
+    if (number.length !== 10) {
       setErrorMessage("* Contact number must be exactly 10 digits.");
       return;
     }
