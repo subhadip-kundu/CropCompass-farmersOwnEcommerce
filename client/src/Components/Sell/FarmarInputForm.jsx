@@ -4,8 +4,10 @@ import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import { collection, addDoc } from "firebase/firestore";
 import farmarImage from "../../assets/InputForrmFarmerMarket.png"; // Importing farmarImage from assets folder
 import { useNavigate } from "react-router-dom";
+import LoadingSpinner from "../LoadingSpinner";
 
 const FarmerInputForm = () => {
+  const [loading, setLoading] = useState(false);
   const [itemName, setItemName] = useState("");
   const [quantityType, setQuantityType] = useState("weight");
   const [quantity, setQuantity] = useState("");
@@ -44,6 +46,7 @@ const FarmerInputForm = () => {
       setErrorMessage("* Contact number must be exactly 10 digits.");
       return;
     }
+    setLoading(true);
     try {
       // For Images
       const photoRef = ref(
@@ -81,14 +84,13 @@ const FarmerInputForm = () => {
           }
         );
         console.log("Document written with ID: ", docRef.id);
+        setLoading(false);
 
         //Navigate to the success page
         navigate(path);
       } catch (e) {
         console.error("Error adding document: ", e);
       }
-
-      alert("Data stored successfully in Firestore");
       // Reset form fields after successful submission
       setItemName("");
       setQuantity("");
@@ -116,7 +118,9 @@ const FarmerInputForm = () => {
     }
   };
 
-  return (
+  return loading ? (
+    <LoadingSpinner />
+  ) : (
     <div className="flex w-full flex-col md:flex-row items-center justify-between">
       <div className="w-5/12">
         <img src={farmarImage} alt="hut" />
@@ -171,7 +175,7 @@ const FarmerInputForm = () => {
                   className="block text-gray-700 text-sm font-bold mb-2"
                   htmlFor="quantity"
                 >
-                  Quantity
+                  Quantity(In Kg)
                 </label>
                 <div></div>
                 <input
