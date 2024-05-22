@@ -5,6 +5,7 @@ import { isLogged } from "../redux/logged/loggedSlice";
 import { useNavigate } from "react-router-dom";
 
 const LoginSignup = () => {
+  const SERVER_URL = "https://cropcompass-farmersownecommerce-1.onrender.com"
   // Redux state management
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ const LoginSignup = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/signup",
+        `${SERVER_URL}/api/auth/signup`,
         signupFormData
       );
       setActiveTab("login");
@@ -56,7 +57,7 @@ const LoginSignup = () => {
     try {
       const response = await axios({
         method: "post",
-        url: "http://localhost:5000/api/auth/signin",
+        url: `${SERVER_URL}/api/auth/signin`,
         withCredentials: true,
         data: loginFormData,
       });
