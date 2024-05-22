@@ -35,7 +35,7 @@ const Success = () => {
           onClick={returnHome}
           className="mt-6 px-5 py-3 bg-green-500 text-white font-semibold rounded-lg shadow-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300 animate__animated animate__pulse animate__delay-2s"
         >
-          Go to Dashboard
+          Go to Home
         </button>
       </div>
     </div>

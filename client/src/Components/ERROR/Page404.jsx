@@ -3,7 +3,7 @@ import './Page404.css'
 
 const Page404 = () => {
   return (
-    <main className="bg-blue-900 py-8 flex flex-col items-center justify-center text-white font-sans font-Rubik">
+    <main className="bg-blue-900 py-8 flex flex-col items-center justify-center text-white font-Rubik h-screen">
       <h1 className="text-3xl md:text-5xl mb-8 uppercase">Error 404. The page does not exist</h1>
       <p className="max-w-lg mb-8">Sorry! The page you are looking for cannot be found. Perhaps the page you requested was moved or deleted. It is also possible that you made a small typo when entering the address. Go to the main page.</p>
       <div className="relative w-full max-w-md flex justify-center items-center">

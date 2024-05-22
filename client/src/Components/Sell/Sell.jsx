@@ -1,21 +1,13 @@
 import React from "react";
 import FarmerInputForm from "./FarmarInputForm";
 import { useSelector } from "react-redux";
+import PleaseLogin from "../PleaseLogin";
 
-const CenteredMessage = () => {
-  return (
-    <div className="flex items-center justify-center h-screen font-Rubik">
-      <h1 className="text-8xl font-bold leading-loose text-transparent bg-clip-text bg-gradient-to-r from-lime-700 via-cyan-500 to-pink-500 animate-pulse">
-      Please login first!
-      </h1>
-    </div>
-  );
-};
 
 function Sell() {
   const isLoggedIn = useSelector((state) => state.isLogged.value);
   return !isLoggedIn ? (
-    <CenteredMessage />
+    <PleaseLogin />
   ) : (
     <div className="min-h-[90vh] flex justify-center items-center w-[75%] mx-auto">
       <FarmerInputForm />

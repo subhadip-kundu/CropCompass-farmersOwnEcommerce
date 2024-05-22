@@ -131,13 +131,13 @@ const FarmerInputForm = () => {
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
+                  className="block text-gray-700 text-sm font-bold mb-2 "
                   htmlFor="item-name"
                 >
                   Item Name
                 </label>
                 <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className=" capitalize shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="item-name"
                   type="text"
                   placeholder="Enter item name"
@@ -163,7 +163,7 @@ const FarmerInputForm = () => {
                   <option value="Rice">Rice</option>
                   <option value="Wheat">Wheat</option>
                   <option value="Nuts">Nuts</option>
-                  <option value="Suger">Suger</option>
+                  <option value="Sugar">Sugar</option>
                   <option value="Spices">Spices</option>
                   <option value="Fruits">Fruits</option>
                   <option value="Vegetables">Vegetables</option>
