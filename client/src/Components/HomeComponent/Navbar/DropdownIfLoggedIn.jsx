@@ -14,21 +14,28 @@ function DropdownIfLoggedIn({ onLogout }) {
   }, []);
 
   async function getUser() {
+    const SERVER_URL = "https://cropcompass-farmersownecommerce-1.onrender.com";
+    // const SERVER_URL = "http://localhost:5000";
     try {
       const response = await axios({
         method: "get",
-        url: "http://localhost:5000/api/auth/user",
+        url: `${SERVER_URL}/api/auth/user`,
         withCredentials: true,
       });
-
+  
       if (response.data.success) {
         setUserData(response.data.data);
       }
     } catch (error) {
-      console.log(error);
+      // Check if error.response.data.success exists and print it
+      if (error.response && error.response.data) {
+        console.log('ERROR ON USER RENDERING :: '+ error.response.data.message);
+      } else {
+        console.log("An error occurred while getting user data:", error);
+      }
     }
   }
-
+  
   return profile ? (
     <div className="absolute right-1 top-14  bg-white rounded-md shadow-lg z-20 border-2 border-blue-100 text-center font-medium">
       <div className="max-w-md w-full bg-white shadow-lg rounded-lg overflow-hidden">

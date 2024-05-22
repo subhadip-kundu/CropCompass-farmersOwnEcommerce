@@ -30,10 +30,12 @@ function Navbar() {
   };
 
   const handleLogout = async () => {
+    const SERVER_URL = "https://cropcompass-farmersownecommerce-1.onrender.com";
+    // const SERVER_URL = "http://localhost:5000";
     try {
       const response = await axios({
         method: "get",
-        url: "http://localhost:5000/api/auth/logout",
+        url: `${SERVER_URL}/api/auth/logout`,
         withCredentials: true,
       });
       if (response.data.success) {
@@ -41,9 +43,15 @@ function Navbar() {
         setShowDropdown(false);
       }
     } catch (error) {
-      console.log(error);
+      // Check if error.response.data.success exists and print it
+      if (error.response && error.response.data && error.response.data.success) {
+        console.log(error.response.data.message);
+      } else {
+        console.log("An error occurred while logging out:", error);
+      }
     }
   };
+  
 
   useEffect(() => {
     // Add event listener when the component mounts

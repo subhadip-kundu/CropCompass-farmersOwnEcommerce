@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const LoginSignup = () => {
   const SERVER_URL = "https://cropcompass-farmersownecommerce-1.onrender.com"
+  // const SERVER_URL = "http://localhost:5000"
   // Redux state management
   const dispatch = useDispatch();
   const navigate = useNavigate();
