@@ -68,7 +68,6 @@ import Page404 from "./Components/ERROR/Page404.jsx";
 import Success from "./Components/Success.jsx";
 import LoginSignup from "./Components/LoginSignup.jsx";
 import Shoping from "./Components/Shop/Shoping.jsx";
-import ContactSubmit from "./Components/ContactSubmit.jsx";
 import Cart from "./Components/Cart/Cart.jsx";
 
 
@@ -81,7 +80,7 @@ const router = createBrowserRouter(
       <Route path="sell" element={<Sell />} />
       <Route path="contact-us" element={<Contact />} />
       <Route path="Success" element={<Success />} />
-      <Route path="ContactSubmitted" element={<ContactSubmit />} />
+      <Route path="ContactSubmitted" element={<Success />} />
       <Route path="register" element={<LoginSignup />} />
       <Route path="shoping" element={<Shoping />} />
       <Route path="/cart" element={<Cart />} />
