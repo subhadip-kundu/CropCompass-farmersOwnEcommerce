@@ -30,8 +30,8 @@ function Navbar() {
   };
 
   const handleLogout = async () => {
-    const SERVER_URL = "https://cropcompass-farmersownecommerce-1.onrender.com";
-    // const SERVER_URL = "http://localhost:5000";
+    // const SERVER_URL = "https://cropcompass-farmersownecommerce-1.onrender.com";
+    const SERVER_URL = "http://localhost:5000";
     try {
       const response = await axios({
         method: "get",
