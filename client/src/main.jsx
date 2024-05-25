@@ -69,6 +69,7 @@ import Success from "./Components/Success.jsx";
 import LoginSignup from "./Components/LoginSignup.jsx";
 import Shoping from "./Components/Shop/Shoping.jsx";
 import Cart from "./Components/Cart/Cart.jsx";
+import AddressForm from "./Components/Address/AddressForm.jsx";
 
 
 const router = createBrowserRouter(
@@ -84,6 +85,7 @@ const router = createBrowserRouter(
       <Route path="register" element={<LoginSignup />} />
       <Route path="shoping" element={<Shoping />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/address" element={<AddressForm />} />
       <Route path="*" element={<Page404 />} />
     </Route>
   )

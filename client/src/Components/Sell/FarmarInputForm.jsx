@@ -21,12 +21,6 @@ const FarmerInputForm = () => {
   const navigate = useNavigate();
   const path = `/Success`;
 
-  // const handleSubmit = async (e) => {
-  //     e.preventDefault();
-  //     if (!itemName || !quantity || !price || !block || !category || !image || !image2 ) {
-  //         setErrorMessage("Please fill out all fields and select an image.");
-  //         return;
-  //     }
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (
