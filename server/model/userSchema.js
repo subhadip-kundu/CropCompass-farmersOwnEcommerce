@@ -32,6 +32,13 @@ const userSchema = new Schema(
     forgotPasswordExpiryDate: {
       type: Date,
     },
+    address: {
+      street: { type: String },
+      city: { type: String },
+      state: { type: String },
+      zip: { type: String },
+      country: { type: String },
+    }
   },
   {
     timestamps: true,
@@ -39,7 +46,6 @@ const userSchema = new Schema(
 );
 
 // Custom middleware
-// .pre check it before saving
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     return next();

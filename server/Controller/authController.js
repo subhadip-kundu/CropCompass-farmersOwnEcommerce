@@ -5,9 +5,7 @@ const bcrypt = require("bcrypt");
 const signup = async (req, res, next) => {
   try {
     const { name, email, password, confirmPassword } = req.body;
-    console.log(name, email, password, confirmPassword);
 
-    // Validate input data
     if (!name || !email || !password || !confirmPassword) {
       return res.status(400).json({
         success: false,
@@ -22,16 +20,13 @@ const signup = async (req, res, next) => {
       });
     }
 
-    // Email validator
-    const validEmail = emailValidator.validate(email);
-    if (!validEmail) {
+    if (!emailValidator.validate(email)) {
       return res.status(400).json({
         success: false,
         message: "Invalid email address!",
       });
     }
 
-    // Check if user already exists with the same email
     const existingUser = await userModel.findOne({ email });
     if (existingUser) {
       return res.status(400).json({
@@ -40,8 +35,7 @@ const signup = async (req, res, next) => {
       });
     }
 
-    const userInfo = userModel(req.body);
-
+    const userInfo = new userModel({ name, email, password });
     const result = await userInfo.save();
 
     return res.status(200).json({
@@ -63,7 +57,7 @@ const signin = async (req, res, next) => {
   if (!email || !password) {
     return res.status(400).json({
       success: false,
-      message: "every field is mandatory.",
+      message: "Every field is mandatory.",
     });
   }
 
@@ -77,13 +71,12 @@ const signin = async (req, res, next) => {
       });
     }
 
-    /* Cookie area */
     const token = user.jwtToken();
     user.password = undefined;
 
     const cookieOption = {
       maxAge: 24 * 60 * 60 * 1000,
-      httpOnly: false,
+      httpOnly: true,
     };
 
     res.cookie("token", token, cookieOption);
@@ -93,7 +86,6 @@ const signin = async (req, res, next) => {
       data: user,
     });
   } catch (error) {
-    // Handle unexpected errors
     console.error("Error during signin:", error);
     res.status(500).json({
       success: false,
@@ -138,9 +130,73 @@ const logout = async (req, res) => {
   }
 };
 
+const updateAddress = async (req, res) => {
+  const userId = req.user.id;
+  const { street, city, state, zip, country } = req.body;
+
+  if (!street || !city || !state || !zip || !country) {
+    return res.status(400).json({
+      success: false,
+      message: "All address fields are required.",
+    });
+  }
+
+  try {
+    const user = await userModel.findById(userId);
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found.",
+      });
+    }
+
+    user.address = { street, city, state, zip, country };
+    await user.save();
+
+    return res.status(200).json({
+      success: true,
+      message: "Address updated successfully.",
+      data: user.address,
+    });
+  } catch (error) {
+    console.error("Error updating address:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error. Can't update address.",
+    });
+  }
+};
+
+const getAddress = async (req, res) => {
+  const userId = req.user.id;
+
+  try {
+    const user = await userModel.findById(userId);
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found.",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      data: user.address,
+    });
+  } catch (error) {
+    console.error("Error retrieving address:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error. Can't retrieve address.",
+    });
+  }
+};
+
 module.exports = {
   signup,
   signin,
   getUser,
   logout,
+  updateAddress,
+  getAddress,
 };
