@@ -76,7 +76,7 @@ const signin = async (req, res, next) => {
 
     const cookieOption = {
       maxAge: 24 * 60 * 60 * 1000,
-      httpOnly: true,
+      httpOnly: false,
     };
 
     res.cookie("token", token, cookieOption);
@@ -115,7 +115,7 @@ const logout = async (req, res) => {
   try {
     const cookieOption = {
       expires: new Date(),
-      httpOnly: true,
+      httpOnly: false,
     };
     res.cookie("token", null, cookieOption);
     res.status(200).json({
