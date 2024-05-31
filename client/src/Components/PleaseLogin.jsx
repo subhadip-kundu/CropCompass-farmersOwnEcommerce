@@ -5,7 +5,7 @@ import 'animate.css/animate.min.css';
 
 const PleaseLogin = () => {
     const goHome = () => {
-      window.location.href = '/';
+      window.location.href = '/register';
     };
   return (
     <div className="flex items-center justify-center h-screen bg-gradient-to-r from-pink-200 via-cyan-300 to-pink-200">
