@@ -1,25 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCart } from "../../CartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import emailjs from "emailjs-com";
+import LoadingSpinner from "../LoadingSpinner";
 
 const Cart = () => {
-  const { cart, removeFromCart } = useCart();
+  const { cart, removeFromCart, clearCart } = useCart();
+  const [loading, setLoading] = useState(false);
 
   const calculateTotal = () => {
     return cart.reduce((total, item) => total + item.price * 1, 0);
   };
 
   const handlePlaceOrder = () => {
-    // Handle place order functionality here
-    console.log("Order placed:", cart);
-    alert("Order placed successfully!");
+    setLoading(true);
+    const templateParams = {
+      order_id: cart[0]?.id || "N/A",
+      items: cart
+        .map((item) => `${item.itemName} (${item.quantity} kg)`)
+        .join(", "),
+      total: calculateTotal().toFixed(2),
+    };
+
+    emailjs
+      .send(
+        "service_39w69rp",
+        "template_q8gvj25",
+        templateParams,
+        "GyIxGuJKszHiA5GgB"
+      )
+      .then((response) => {
+        console.log(
+          "Order placed and email sent successfully!",
+          response.status,
+          response.text
+        );
+        setLoading(false);
+        alert("Order placed and confirmation email sent successfully!");
+        clearCart(); // Clear the cart after successful order placement
+      })
+      .catch((error) => {
+        console.error("Failed to send email", error);
+        alert("Order placed but failed to send confirmation email.");
+        setLoading(false);
+      });
+
+    // Additional order handling logic
   };
 
-  return (
+  return loading ? (
+    <LoadingSpinner />
+  ) : (
     <div className="min-h-screen w-4/6 mx-auto font-Rubik">
       <div className="max-w-4xl mx-auto my-4 p-4 border rounded shadow-lg">
-        <h2 className="text-3xl font-bold mb-4 text-center border-b-2 border-gray-700">Cart</h2>
+        <h2 className="text-3xl font-bold mb-4 text-center border-b-2 border-gray-700">
+          Cart
+        </h2>
         {cart.length === 0 ? (
           <p className="text-gray-700">Your cart is empty.</p>
         ) : (
@@ -59,7 +96,7 @@ const Cart = () => {
                 Place Order
               </button>
               <h3 className="text-xl font-bold">
-                Total: ₹{calculateTotal()}/-
+                Total: ₹{calculateTotal().toFixed(2)}/-
               </h3>
             </div>
           </>
