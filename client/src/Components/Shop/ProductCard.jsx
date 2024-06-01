@@ -3,13 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus, faBolt, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { useCart } from "../../CartContext";
 import { useSelector } from "react-redux";
+import emailjs from "emailjs-com";
 
 const ProductCard = ({ item }) => {
   const { addToCart } = useCart();
-  const { itemName, price, block, imageUrl, quantity, number } = item;
+  const { itemName, price, block, imageUrl, quantity, number, id } = item;
   const [phoneClick, setPhoneClick] = useState(false);
   const isAddress = useSelector((state) => state.address.value);
-
+  const [loading, setLoading] = useState(false);
 
   const calling = () => {
     setPhoneClick(!phoneClick);
@@ -21,11 +22,38 @@ const ProductCard = ({ item }) => {
   };
 
   const handleBuyNow = () => {
-    console.log(itemName);
-    
-  if (isAddress) {
-    console.log(isAddress.data);
-  }
+    setLoading(true);
+    const templateParams = {
+      order_id: id,
+      items: itemName,
+      total: price,
+    };
+
+    emailjs
+      .send(
+        "service_39w69rp",
+        "template_q8gvj25",
+        templateParams,
+        "GyIxGuJKszHiA5GgB"
+      )
+      .then((response) => {
+        console.log(
+          "Order placed and email sent successfully!",
+          response.status,
+          response.text
+        );
+        setLoading(false);
+        alert("Order placed and confirmation email sent successfully!");
+      })
+      .catch((error) => {
+        console.error("Failed to send email", error);
+        alert("Order placed but failed to send confirmation email.");
+        setLoading(false);
+      });
+
+    if (isAddress) {
+      console.log(isAddress.data);
+    }
   };
 
   return (
@@ -66,10 +94,20 @@ const ProductCard = ({ item }) => {
           <FontAwesomeIcon icon={faCartPlus} /> Add to Cart
         </button>
         <button
-          className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm py-2 px-4 rounded flex gap-2 items-center justify-center"
+          className={`${
+            loading ? "bg-orange-600" : "bg-orange-500 hover:bg-orange-600"
+          } text-white font-semibold text-sm py-2 px-4 rounded flex gap-2 items-center justify-center`}
           onClick={handleBuyNow}
         >
-          <FontAwesomeIcon icon={faBolt} /> Buy Now
+          {loading ? (
+            <div className="flex items-center justify-center bg-orange-600 px-7">
+              <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-white border-solid"></div>
+            </div>
+          ) : (
+            <>
+              <FontAwesomeIcon icon={faBolt} /> Buy Now
+            </>
+          )}
         </button>
       </div>
     </div>
