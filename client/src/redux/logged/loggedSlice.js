@@ -18,3 +18,5 @@ export const loggedSlice = createSlice({
 export const { isLogged } = loggedSlice.actions;
 
 export default loggedSlice.reducer;
+
+

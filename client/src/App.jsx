@@ -7,7 +7,7 @@ import { CartProvider } from './CartContext'; // Import CartProvider
 
 function App() {
   return (
-    <CartProvider> {/* Wrap the application with CartProvider */}
+    <CartProvider> 
       <Navbar />
       <Outlet />
       <Copyright />
