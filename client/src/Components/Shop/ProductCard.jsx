@@ -4,6 +4,7 @@ import { faCartPlus, faBolt, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { useCart } from "../../CartContext";
 import { useSelector } from "react-redux";
 import emailjs from "emailjs-com";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ item }) => {
   const { addToCart } = useCart();
@@ -11,9 +12,11 @@ const ProductCard = ({ item }) => {
   const [phoneClick, setPhoneClick] = useState(false);
   const isAddress = useSelector((state) => state.address.value);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const calling = () => {
     setPhoneClick(!phoneClick);
+    console.log(isAddress.data == {});
   };
 
   const handleAddToCart = () => {
@@ -51,8 +54,9 @@ const ProductCard = ({ item }) => {
         setLoading(false);
       });
 
-    if (isAddress) {
-      console.log(isAddress.data);
+    if (!isAddress) {
+      let path = `/address`;
+      navigate(path);
     }
   };
 

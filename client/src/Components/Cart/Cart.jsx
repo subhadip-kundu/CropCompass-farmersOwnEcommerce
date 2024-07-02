@@ -4,16 +4,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import emailjs from "emailjs-com";
 import LoadingSpinner from "../LoadingSpinner";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 
 const Cart = () => {
   const { cart, removeFromCart, clearCart } = useCart();
   const [loading, setLoading] = useState(false);
+  const isAddress = useSelector((state) => state.address.value);
+  const navigate = useNavigate();
 
   const calculateTotal = () => {
     return cart.reduce((total, item) => total + item.price * 1, 0);
   };
 
   const handlePlaceOrder = () => {
+    if (isAddress.data != {}) {
+      let path = `/address`;
+      navigate(path);
+    }
     setLoading(true);
     const templateParams = {
       order_id: cart[0]?.id || "N/A",
@@ -46,6 +55,7 @@ const Cart = () => {
         setLoading(false);
       });
 
+      
     // Additional order handling logic
   };
 
