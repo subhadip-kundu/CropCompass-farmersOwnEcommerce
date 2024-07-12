@@ -14,7 +14,7 @@ const Cart = () => {
   const navigate = useNavigate();
 
   const calculateTotal = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    return cart.reduce((total, item) => total + item.price * 1, 0);
   };
 
   const handlePlaceOrder = () => {
