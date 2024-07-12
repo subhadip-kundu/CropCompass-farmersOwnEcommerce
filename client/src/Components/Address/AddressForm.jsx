@@ -1,4 +1,3 @@
-// src/AddressForm.js
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -20,6 +19,10 @@ const AddressForm = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const goHome = () => {
+    window.location.href = "/register";
   };
 
   const handleSubmit = async (e) => {
@@ -56,6 +59,7 @@ const AddressForm = () => {
       );
       setMessageColor("text-green-500");
       setMessage("* Address updated successfully");
+      goHome();
       console.log(response.data);
     } catch (error) {
       setMessageColor("text-red-500");
