@@ -7,7 +7,6 @@ import LoadingSpinner from "../LoadingSpinner";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-
 const Cart = () => {
   const { cart, removeFromCart, clearCart } = useCart();
   const [loading, setLoading] = useState(false);
@@ -15,15 +14,19 @@ const Cart = () => {
   const navigate = useNavigate();
 
   const calculateTotal = () => {
-    return cart.reduce((total, item) => total + item.price * 1, 0);
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
   const handlePlaceOrder = () => {
-    if (isAddress.data != {}) {
+    if (!isAddress?.data?.street) {
+      alert("Please add your address to proceed with the purchase.");
       let path = `/address`;
       navigate(path);
+      return;
     }
+
     setLoading(true);
+
     const templateParams = {
       order_id: cart[0]?.id || "N/A",
       items: cart
@@ -55,7 +58,6 @@ const Cart = () => {
         setLoading(false);
       });
 
-      
     // Additional order handling logic
   };
 
